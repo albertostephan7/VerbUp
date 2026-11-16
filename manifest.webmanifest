@@ -1,0 +1,11 @@
+{
+  "name": "VerbUp",
+  "short_name": "VerbUp",
+  "description": "Verbos e conversação em inglês, complemento do Busuu.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#14343f",
+  "theme_color": "#14343f",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

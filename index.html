@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14343f">
+<meta name="description" content="VerbUp: verbos e conversação em inglês, complemento do Busuu.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VerbUp">
+<title>VerbUp — Inglês A1 → A2</title>
+<style>
+:root{
+  --bg:#e9f1ef;--card:rgba(255,255,255,.9);--ink:#14262e;--mute:#5d737d;--line:#d4e1de;
+  --teal:#0f8b8d;--teal-d:#0b6f71;--teal-l:#dcf1f0;
+  --green:#3aa86b;--green-d:#2b8a55;--green-l:#e1f4e9;
+  --red:#d8594c;--red-d:#b84439;--red-l:#fbe6e3;
+  --blue:#2b7bb9;--blue-d:#1f628f;--blue-l:#e0eef8;
+  --yellow:#e9b44c;--yellow-l:#fbf0d4;--purple:#6b5fb5;--orange:#d98324;
+  --r:20px;--sh:0 10px 30px -14px rgba(20,60,70,.35);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+body{background:var(--bg);min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800' preserveAspectRatio='xMidYMax slice'%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fbf1e2'/%3E%3Cstop offset='.55' stop-color='%23e9f2ef'/%3E%3Cstop offset='1' stop-color='%23d6e9e8'/%3E%3C/linearGradient%3E%3CradialGradient id='g' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23f7cf8a' stop-opacity='.75'/%3E%3Cstop offset='1' stop-color='%23f7cf8a' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='1200' height='800' fill='url(%23s)'/%3E%3Ccircle cx='930' cy='190' r='230' fill='url(%23g)'/%3E%3Ccircle cx='930' cy='190' r='64' fill='%23f6c987' opacity='.8'/%3E%3Cpath d='M0 560 C180 520 330 600 520 560 S880 500 1200 560 V800 H0Z' fill='%239fcfcb' opacity='.28'/%3E%3Cpath d='M0 620 C200 580 380 660 600 620 S950 570 1200 630 V800 H0Z' fill='%235fb0b0' opacity='.24'/%3E%3Cpath d='M0 690 C220 655 420 730 650 690 S980 650 1200 700 V800 H0Z' fill='%232f8f95' opacity='.22'/%3E%3C/svg%3E") center bottom/cover no-repeat;transform:translateZ(0)}
+button{font:inherit;cursor:pointer;border:0;color:inherit;-webkit-tap-highlight-color:transparent}
+#app{max-width:720px;margin:0 auto;padding:14px 16px calc(100px + env(safe-area-inset-bottom))}
+.hero{position:relative;border-radius:28px;overflow:hidden;padding:20px 22px 22px;min-height:178px;color:#fff;margin-bottom:16px;box-shadow:var(--sh);background:#14343f url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 260' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='s' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2314343f'/%3E%3Cstop offset='.6' stop-color='%231b6b75'/%3E%3Cstop offset='1' stop-color='%233aa3a5'/%3E%3C/linearGradient%3E%3CradialGradient id='g' cx='.5' cy='.5' r='.5'%3E%3Cstop offset='0' stop-color='%23ffd58f' stop-opacity='.9'/%3E%3Cstop offset='1' stop-color='%23ffd58f' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='800' height='260' fill='url(%23s)'/%3E%3Ccircle cx='620' cy='150' r='150' fill='url(%23g)'/%3E%3Ccircle cx='620' cy='150' r='42' fill='%23ffd9a0'/%3E%3Cpath d='M0 170 C120 150 220 190 360 170 S600 150 800 175 V260 H0Z' fill='%230f4f5a' opacity='.55'/%3E%3Cpath d='M0 200 C140 182 260 220 420 200 S660 185 800 205 V260 H0Z' fill='%230c3f49' opacity='.7'/%3E%3Cpath d='M0 228 C160 214 300 244 460 228 S680 216 800 232 V260 H0Z' fill='%230a323b'/%3E%3Cg stroke='%23ffd9a0' stroke-opacity='.45' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M585 196h70'/%3E%3Cpath d='M598 208h44'/%3E%3Cpath d='M572 220h96'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat;display:flex;flex-direction:column;justify-content:space-between;gap:26px}
+.hero-t{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.9rem;letter-spacing:-.8px;margin-right:auto;line-height:1.1}
+.logo small{display:block;font-size:.78rem;font-weight:500;opacity:.82;letter-spacing:0;margin-top:3px}
+.hero-g{font-size:1.15rem;font-weight:600;text-shadow:0 1px 10px rgba(0,0,0,.25)}
+.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:999px;padding:5px 13px;font-weight:700;font-size:.92rem}
+.hdr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.7);border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--sh)}
+.bar{height:10px;background:rgba(15,100,110,.12);border-radius:999px;overflow:hidden;flex:1}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#3cb6a8);border-radius:999px;transition:width .5s}
+.muted{color:var(--mute);font-size:.9rem}
+.btn{background:var(--teal);color:#fff;font-weight:700;letter-spacing:.2px;padding:13px 24px;border-radius:999px;box-shadow:0 8px 18px -8px rgba(15,139,141,.7);transition:transform .12s,box-shadow .12s,filter .12s}
+.btn:hover:not(:disabled){filter:brightness(1.06)}
+.btn:active:not(:disabled){transform:translateY(1px) scale(.98);box-shadow:0 3px 8px -4px rgba(15,139,141,.7)}
+.btn:disabled{background:#d6dfde;color:#97a8a8;box-shadow:none;cursor:not-allowed}
+.btn.blue{background:var(--blue);box-shadow:0 8px 18px -8px rgba(43,123,185,.7)}
+.btn.red{background:var(--red);box-shadow:0 8px 18px -8px rgba(216,89,76,.7)}
+.btn.ghost{background:rgba(255,255,255,.9);color:var(--teal-d);border:1px solid var(--line);box-shadow:none}
+.btn.sm{padding:8px 16px;font-size:.85rem}
+.btn.block{width:100%}
+.warn{background:var(--yellow-l);border:1px solid var(--yellow);border-radius:16px;padding:12px 14px;margin-bottom:14px;font-size:.92rem}
+.warn.err{background:var(--red-l);border-color:var(--red)}
+.unit{border-left:4px solid var(--c,var(--teal))}
+.unit h3{margin:0 0 2px;font-size:1.1rem;display:flex;align-items:center}
+.unit .num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--c);color:#fff;font-weight:700;font-size:.9rem;margin-right:10px;flex:none}
+.lessons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.les{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:16px;padding:11px 4px;text-align:center;font-weight:600;font-size:.8rem;position:relative;transition:transform .12s,border-color .12s}
+.les span{display:block;font-size:1.4rem}
+.les.done{background:var(--green-l);border-color:var(--green)}
+.les.done::after{content:"✓";position:absolute;top:4px;right:9px;color:var(--green-d);font-weight:900}
+.les:hover{border-color:var(--c);transform:translateY(-2px)}
+@media(max-width:480px){.lessons{grid-template-columns:repeat(2,1fr)}.hero{min-height:160px}}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.x{background:none;font-size:1.5rem;color:var(--mute);padding:4px 8px}
+.rate{display:flex;gap:4px}
+.rate button{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-weight:600;font-size:.78rem}
+.rate button.on{background:var(--teal-l);border-color:var(--teal);color:var(--teal-d)}
+.q-kind{font-weight:700;color:var(--teal-d);text-transform:uppercase;font-size:.74rem;letter-spacing:.8px}
+.q-text{font-size:1.35rem;font-weight:700;margin:6px 0 16px;line-height:1.3}
+.opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px;font-size:1.05rem;font-weight:500;transition:border-color .12s,background .12s,transform .12s}
+.opt:hover:not(:disabled){border-color:var(--teal);background:var(--teal-l)}
+.opt.right{background:var(--green-l);border-color:var(--green);animation:pulse .5s}
+.opt.wrong{background:var(--red-l);border-color:var(--red);animation:shake .4s}
+.opt:disabled{cursor:default}
+.fb{border-radius:16px;padding:14px 16px;margin:12px 0;animation:rise .25s}
+.fb.good{background:var(--green-l);border:1px solid var(--green)}
+.fb.bad{background:var(--red-l);border:1px solid var(--red)}
+.fb b.tag{display:inline-block;background:var(--red);color:#fff;border-radius:999px;padding:1px 10px;font-size:.76rem;margin-right:6px}
+.fb p{margin:6px 0}
+.foot{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.8);padding:12px 16px calc(12px + env(safe-area-inset-bottom));z-index:5}
+.foot .in{max-width:720px;margin:0 auto;display:flex;gap:10px;justify-content:flex-end}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes floatup{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-60px)}}
+.xp-pop{position:fixed;font-weight:800;color:var(--orange);font-size:1.5rem;pointer-events:none;animation:floatup .9s forwards;z-index:20}
+.vcard{text-align:center;padding:28px 18px}
+.vcard .big{font-size:2.8rem;font-weight:800;color:var(--teal-d);letter-spacing:-1px}
+.forms{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}
+.forms div{background:var(--teal-l);border-radius:14px;padding:8px 14px;min-width:96px}
+.forms small{display:block;color:var(--mute);font-weight:600;font-size:.68rem;text-transform:uppercase;letter-spacing:.5px}
+.forms b{font-size:1.15rem}
+.ex{background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:14px;padding:12px;margin:12px 0;font-size:1.1rem}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--teal);width:22px;border-radius:999px}
+.slot{min-height:64px;border:1.5px dashed #aac3c1;border-radius:16px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;background:rgba(255,255,255,.7)}
+.bank{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:56px}
+.chip{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:600;font-size:1.05rem;box-shadow:0 4px 10px -6px rgba(20,60,70,.35)}
+.chip:hover{border-color:var(--teal)}
+.chip.used{visibility:hidden}
+.chat{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.bub{max-width:86%;padding:10px 14px;border-radius:18px;font-weight:500}
+.bub.n{background:rgba(255,255,255,.95);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
+.bub.y{background:var(--teal-l);border:1px solid #9fd3d1;align-self:flex-end;border-bottom-right-radius:4px}
+.bub small{display:block;color:var(--mute);font-weight:400}
+.say{background:none;font-size:1.1rem;padding:0 4px}
+.target{font-size:1.4rem;font-weight:700;margin:6px 0 8px;line-height:1.3}
+.w{display:inline-block;padding:1px 7px;border-radius:8px;margin:2px 1px}
+.w.ok{background:var(--green-l);color:#23703f}
+.w.near{background:var(--yellow-l);color:#80590a}
+.w.bad{background:var(--red-l);color:#b0362c}
+.w.extra{text-decoration:line-through;color:#888;background:#eee}
+.mic{width:78px;height:78px;border-radius:50%;background:var(--red);color:#fff;font-size:2rem;box-shadow:0 12px 24px -10px rgba(216,89,76,.8);margin:10px auto;display:block}
+.mic.rec{animation:pulse 1s infinite;background:#b83a30}
+.score{font-size:3rem;font-weight:800;text-align:center}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.cmp div{background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:14px;padding:10px}
+.cmp small{display:block;color:var(--mute);font-weight:600;text-transform:uppercase;font-size:.68rem;letter-spacing:.5px}
+@media(max-width:480px){.cmp{grid-template-columns:1fr}}
+.row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
+.prob{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.big-n{font-size:2rem;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.stats div{background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:16px;padding:12px}
+.errgrp{border-left:4px solid var(--red);background:rgba(255,255,255,.85);border-radius:14px;padding:10px 14px;margin:10px 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.errgrp li{margin:6px 0}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:#14262e;color:#fff;padding:10px 18px;border-radius:999px;z-index:30;max-width:90%}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+'use strict';
+/* =====================================================================
+   CONTEÚDO — edite/amplie aqui.
+   Padrões de erro:  S = sujeito omitido | O = ordem/tradução literal/preposição
+                     C = maiúsculas/pontuação | V = forma do verbo | P = pronúncia
+   Q(tipo, enunciado, certa, porquê, [errada, padrão, explicação], ...)
+        tipo: 'gap' (lacuna) | 'tr' (tradução) | 'fix' (frase correta)
+   V(base, passado, particípio, tradução, exemplo, tradução do exemplo)
+   B(frase, tradução, padrão, explicação, [[chip extra, padrão], ...])
+   D(cenário, [['n'|'y', inglês, português], ...])  n = personagem, y = aluno
+   (nas falas do aluno 'y' não use contrações: o avaliador compara palavra por palavra)
+   ===================================================================== */
+const PAT={
+  S:{name:'Sujeito omitido',tip:'Em português o sujeito some (“Está frio”, “mas é difícil”). Em inglês cada oração precisa do seu sujeito (it, I, she…). Só pode omitir quando é o MESMO sujeito ligado por and (“I went home and ate”).'},
+  O:{name:'Ordem das palavras / tradução literal / preposição',tip:'Não traduza palavra por palavra. Idade usa BE (I am 24), horas usam at, dias usam on, meses/manhã/ano usam in.'},
+  C:{name:'Maiúsculas e pontuação',tip:'Comece a frase com maiúscula, escreva I, nomes de países, dias e meses com maiúscula e termine com ponto final.'},
+  V:{name:'Forma do verbo',tip:'Revise a conjugação: -s na 3ª pessoa, verbo base depois de do/does/did/can/will, -ing depois de be, passado correto.'},
+  P:{name:'Pronúncia (fala)',tip:'Ouça o nativo em velocidade lenta e repita as palavras problemáticas isoladamente.'}
+};
+const Q=(k,q,a,why,...w)=>({k,q,a,why,w});
+const V=(base,past,pp,pt,ex,exPt,note)=>({base,past,pp,pt,ex,exPt,note});
+const B=(s,pt,pat,why,extra)=>({s,pt,pat:pat||'O',why:why||'',extra:extra||[]});
+const D=(scene,lines)=>({scene,lines});
+
+const UNITS=[
+/* ---------------------------------------------------------------- 1 */
+{id:1,title:'To be',icon:'🙋',color:'#2b7bb9',desc:'Idade, profissão e origem: I am, you are, she is.',
+vocab:[
+ V('be','was / were','been','ser / estar','I am 24 years old.','Eu tenho 24 anos.','am · is · are'),
+ V('live','lived','lived','morar','I live in Recife.','Eu moro em Recife.'),
+ V('work','worked','worked','trabalhar','She works as a nurse.','Ela trabalha como enfermeira.'),
+ V('study','studied','studied','estudar','He studies medicine.','Ele estuda medicina.'),
+ V('speak','spoke','spoken','falar','We speak Portuguese.','Nós falamos português.'),
+ V('come','came','come','vir / ser de','They come from Chile.','Eles são do Chile.')
+],
+quiz:[
+ Q('fix','Como dizer “Eu tenho 24 anos”?','I am 24 years old.','Idade usa o verbo BE + number + years old. Em inglês nunca se usa have para idade.',
+   ['I have 24 years.','O','Tradução literal de “tenho 24 anos”. Em inglês a idade é com BE, não com HAVE.'],
+   ['I am 24 years.','O','Faltou “old”. A estrutura completa é BE + número + years old.'],
+   ['I have 24 years old.','O','Mistura “tenho” (HAVE) com “old”. O verbo certo é BE: I am 24 years old.']),
+ Q('gap','She ___ a nurse.','is','Com she/he/it usamos is.',
+   ['are','V','“are” é para you/we/they.'],['am','V','“am” só combina com I.'],['be','V','Depois de she precisa da forma conjugada (is), não do verbo base.']),
+ Q('tr','Escolha a tradução: “Eu sou do Brasil.”','I am from Brazil.','Origem = BE + from + país (com maiúscula).',
+   ['I am of Brazil.','O','“de” vira from (origem), não of.'],
+   ['I from Brazil.','V','Faltou o verbo BE: I am from Brazil.'],
+   ['I am from brazil.','C','Nomes de países têm maiúscula: Brazil.']),
+ Q('gap','He ___ 30 years old.','is','Idade usa BE; com he, a forma é is.',
+   ['has','O','HAVE para idade é tradução literal de “tem 30 anos”.'],['have','O','HAVE para idade é tradução literal, e ainda não combina com he.'],['does','V','does é auxiliar de pergunta/negação, não substitui o BE.']),
+ Q('fix','Qual frase está correta? (Moro em Recife, mas é muito quente.)','I live in Recife, but it is very hot.','Depois de but começa uma nova oração: precisa do sujeito it.',
+   ['I live in Recife, but is very hot.','S','Sujeito omitido: depois de “but” há uma nova oração e ela precisa de sujeito (it).'],
+   ['i live in Recife, but it is very hot.','C','“I” sempre maiúsculo e a frase começa com maiúscula.'],
+   ['I live in Recife, but it very hot.','V','Faltou o verbo BE depois de it: it is.']),
+ Q('gap','We ___ from Argentina.','are','we/you/they usam are.',
+   ['is','V','is é para he/she/it.'],['am','V','am só combina com I.'],['be','V','Precisa da forma conjugada: are.']),
+ Q('tr','Escolha a tradução: “Eu sou professor.”','I am a teacher.','Profissões levam artigo a/an em inglês.',
+   ['I am teacher.','O','Em português dizemos “sou professor” sem artigo; em inglês precisa de a/an.'],
+   ['I have a teacher.','O','“have” significa “ter”; para dizer o que você é, use BE.'],
+   ['I am a teacher','C','Faltou o ponto final.']),
+ Q('tr','Escolha a tradução: “Está frio hoje.”','It is cold today.','Em inglês o sujeito it é obrigatório em clima, hora e distância.',
+   ['Is cold today.','S','Sujeito omitido: em português “Está frio” não tem sujeito, em inglês precisa de it.'],
+   ['It has cold today.','O','“Ter frio” (sensação) é feeling; clima é it is cold. Não use have.'],
+   ['It is cold today','C','Faltou o ponto final.']),
+ Q('gap','I am 24 years ___.','old','A estrutura é I am 24 years old.',
+   ['age','O','“age” não funciona aqui: years old.'],['of','O','“years of” é tradução literal; o certo é years old.'],['years','O','Repetiu “years”; falta o adjetivo old.']),
+ Q('fix','Qual frase está correta? (Meus pais são médicos.)','My parents are doctors.','Plural pede are e a profissão também no plural.',
+   ['My parents is doctors.','V','parents é plural → are.'],['My parents are doctor.','V','Sujeito plural, profissão no plural: doctors.'],['My parents have doctors.','O','have = ter. Aqui o sentido é “ser”: are.'])
+],
+build:[
+ B('I am 24 years old.','Eu tenho 24 anos.','O','Idade usa BE: I am 24 years old.',[['have','O']]),
+ B('She is from Brazil.','Ela é do Brasil.','C','País com maiúscula e frase com ponto final.',[['brazil.','C']]),
+ B('My brother is a doctor.','Meu irmão é médico.','O','Profissão leva artigo: is a doctor.'),
+ B('It is cold today.','Está frio hoje.','S','Em inglês o sujeito it é obrigatório.'),
+ B('I live in Recife, but it is hot.','Moro em Recife, mas está quente.','S','Depois de but entra uma nova oração: repita o sujeito (it).')
+],
+dialog:D('Small talk: conhecendo um colega de trabalho',[
+ ['n','Hi! My name is Sam. What is your name?','Oi! Meu nome é Sam. Qual é o seu nome?'],
+ ['y','Hi, my name is Ana. Nice to meet you.','Oi, meu nome é Ana. Prazer em conhecer você.'],
+ ['n','Nice to meet you too. How old are you?','Prazer também. Quantos anos você tem?'],
+ ['y','I am 24 years old.','Eu tenho 24 anos.'],
+ ['n','Where are you from?','De onde você é?'],
+ ['y','I am from Brazil and I am a nurse.','Eu sou do Brasil e sou enfermeira.']
+])},
+/* ---------------------------------------------------------------- 2 */
+{id:2,title:'Presente simples',icon:'⏰',color:'#0f8b8d',desc:'Rotina: wake up, work, study, go, have. Preposições at / on / in.',
+vocab:[
+ V('wake up','woke up','woken up','acordar','I wake up at six o\'clock.','Eu acordo às seis horas.'),
+ V('work','worked','worked','trabalhar','She works in a bank.','Ela trabalha em um banco.'),
+ V('study','studied','studied','estudar','I study English on Saturdays.','Eu estudo inglês aos sábados.'),
+ V('go','went','gone','ir','He goes to work by bus.','Ele vai para o trabalho de ônibus.'),
+ V('have','had','had','ter / tomar (refeição)','We have lunch at noon.','Nós almoçamos ao meio-dia.'),
+ V('start','started','started','começar','The class starts at eight.','A aula começa às oito.')
+],
+quiz:[
+ Q('gap','She ___ to work by bus.','goes','Com he/she/it o verbo ganha -s (go → goes).',
+   ['go','V','Esqueceu o -s da 3ª pessoa: she goes.'],['going','V','-ing é presente contínuo e precisaria de is.'],['goed','V','go é irregular no passado (went) e aqui é presente: goes.']),
+ Q('fix','Qual frase está correta? (Ela trabalha em um banco.)','She works in a bank.','3ª pessoa do singular: verbo + s.',
+   ['She work in a bank.','V','Faltou o -s: she works.'],['She is work in a bank.','V','Não use BE + verbo base. Presente simples: she works.'],['Works in a bank.','S','Sujeito omitido: em inglês a frase precisa de she.']),
+ Q('gap','I wake up ___ six o\'clock.','at','Horas exatas usam at.',
+   ['in','O','in é para partes do dia, meses e anos.'],['on','O','on é para dias.'],['to','O','to indica direção, não hora.']),
+ Q('gap','I work ___ Mondays.','on','Dias da semana usam on.',
+   ['in','O','in não é usado com dias.'],['at','O','at é para horas exatas.'],['at the','O','Não use artigo e nem at com dias: on Mondays.']),
+ Q('tr','Escolha a tradução: “Eu estudo inglês de manhã.”','I study English in the morning.','Partes do dia usam in the morning / afternoon / evening.',
+   ['I study English at the morning.','O','Preposição errada: “de manhã” é in the morning.'],
+   ['I study English on morning.','O','Falta o artigo e a preposição correta: in the morning.'],
+   ['I study english in the morning','C','Idiomas têm maiúscula (English) e a frase precisa de ponto final.']),
+ Q('gap','He ___ two brothers.','has','have vira has com he/she/it.',
+   ['have','V','Com he usamos has.'],['haves','V','Forma inexistente: have → has.'],['is','O','is = ser/estar. Para “ter” use has.']),
+ Q('fix','Qual frase está correta? (Moro em Recife, mas lá é muito quente.)','I live in Recife, but it is very hot.','Nova oração depois de but pede sujeito.',
+   ['I live in Recife, but is very hot.','S','Sujeito omitido depois de “but”: it is very hot.'],
+   ['i live in Recife, but it is very hot.','C','“I” sempre maiúsculo, frase começa com maiúscula.'],
+   ['I live in Recife, but it very hot.','V','Falta o verbo is.']),
+ Q('fix','Como perguntar “Você trabalha aos sábados?”','Do you work on Saturdays?','Perguntas no presente simples começam com do/does.',
+   ['You work on Saturdays?','O','Em português só mudamos a entonação; em inglês a pergunta precisa de do no início.'],
+   ['Does you work on Saturdays?','V','Com you usamos do (does é para he/she/it).'],
+   ['Do you works on Saturdays?','V','Depois de do o verbo fica na forma base: work.']),
+ Q('gap','She does not ___ coffee.','drink','Depois de does not, o verbo volta à forma base.',
+   ['drinks','V','Depois de does not não leva -s: o -s já está em does.'],['drinking','V','-ing não combina com does not.'],['drank','V','Passado não combina com does not (presente).'])
+],
+build:[
+ B('I wake up at six o\'clock.','Eu acordo às seis horas.','O','Hora exata: at six o\'clock.',[['in','O']]),
+ B('She goes to work by bus.','Ela vai trabalhar de ônibus.','V','3ª pessoa: goes.',[['go','V']]),
+ B('I study English on Saturdays.','Eu estudo inglês aos sábados.','O','Dia da semana: on Saturdays.',[['in','O']]),
+ B('He has a big family.','Ele tem uma família grande.','O','Ordem em inglês: adjetivo antes do substantivo (big family).'),
+ B('I work a lot, but it is fun.','Eu trabalho muito, mas é divertido.','S','Depois de but repita o sujeito: it is fun.')
+],
+dialog:D('Entrevista de emprego',[
+ ['n','Good morning. What do you do?','Bom dia. O que você faz?'],
+ ['y','I work in a bank.','Eu trabalho em um banco.'],
+ ['n','What time do you start work?','Que horas você começa a trabalhar?'],
+ ['y','I start work at eight o\'clock in the morning.','Eu começo a trabalhar às oito da manhã.'],
+ ['n','Do you work on Saturdays?','Você trabalha aos sábados?'],
+ ['y','No, I do not work on Saturdays.','Não, eu não trabalho aos sábados.']
+])},
+/* ---------------------------------------------------------------- 3 */
+{id:3,title:'Presente contínuo',icon:'📱',color:'#d98324',desc:'O que está acontecendo agora: be + verbo-ing.',
+vocab:[
+ V('talk','talked','talked','conversar','She is talking on the phone.','Ela está falando ao telefone.','talking'),
+ V('wait','waited','waited','esperar','They are waiting for the bus.','Eles estão esperando o ônibus.','waiting'),
+ V('make','made','made','fazer / preparar','I am making dinner.','Estou preparando o jantar.','making (tira o e)'),
+ V('write','wrote','written','escrever','He is writing an email.','Ele está escrevendo um e-mail.','writing (tira o e)'),
+ V('sit','sat','sat','sentar','She is sitting on the sofa.','Ela está sentada no sofá.','sitting (dobra o t)'),
+ V('run','ran','run','correr','We are running in the park.','Estamos correndo no parque.','running (dobra o n)')
+],
+quiz:[
+ Q('gap','I ___ working now.','am','Presente contínuo = BE + verbo-ing; com I usa am.',
+   ['is','V','is é para he/she/it.'],['are','V','are é para you/we/they.'],['do','V','do não forma o presente contínuo.']),
+ Q('fix','Qual frase está correta? (Ela está falando ao telefone.)','She is talking on the phone.','BE + verbo-ing.',
+   ['She talking on the phone.','V','Faltou o verbo BE: she is talking.'],['She is talk on the phone.','V','Faltou o -ing: talking.'],['She talks is on the phone.','O','Ordem errada: BE vem antes do verbo-ing.']),
+ Q('tr','Escolha a tradução: “Está chovendo agora.”','It is raining now.','Clima exige o sujeito it + BE + verbo-ing.',
+   ['Is raining now.','S','Sujeito omitido: precisa de it.'],['It rains now.','V','Para algo acontecendo agora use is raining.'],['It is rain now.','V','Faltou -ing: raining.']),
+ Q('gap','We are ___ dinner.','making','make perde o e antes de -ing: making.',
+   ['make','V','Depois de are precisa de -ing.'],['makes','V','-s é do presente simples.'],['maked','V','make é irregular (made) e aqui precisa de -ing.']),
+ Q('fix','Qual frase está correta? (Estou estudando inglês agora.)','I am studying English now.','Ação em andamento → presente contínuo.',
+   ['I study English now.','V','Presente simples é para rotina. “Agora” pede am studying.'],['I studying English now.','V','Faltou o verbo BE: I am studying.'],['I am studying english now','C','English tem maiúscula e a frase precisa de ponto final.']),
+ Q('gap','He is ___ a letter.','writing','write perde o e: writing.',
+   ['writeing','V','Tire o e antes de -ing.'],['write','V','Depois de is precisa de -ing.'],['wrote','V','Passado não combina com is.']),
+ Q('gap','She is ___ on the sofa.','sitting','sit dobra a consoante: sitting.',
+   ['siting','V','Palavras curtas terminadas em vogal+consoante dobram a consoante: sitting.'],['sit','V','Falta -ing.'],['sits','V','-s é do presente simples.']),
+ Q('fix','Como perguntar “O que você está fazendo?”','What are you doing?','Palavra interrogativa + BE + sujeito + verbo-ing.',
+   ['What you are doing?','O','Ordem errada: em perguntas o BE vem antes do sujeito (are you).'],['What do you doing?','V','Não misture do com -ing.'],['What are you do?','V','Depois de are use -ing: doing.']),
+ Q('tr','Escolha a tradução: “Eu estou trabalhando hoje.”','I am working today.','BE + verbo-ing com sujeito explícito.',
+   ['Am working today.','S','Sujeito omitido: I am working.'],['I am work today.','V','Faltou -ing.'],['i am working today.','C','I sempre maiúsculo e a frase começa com maiúscula.'])
+],
+build:[
+ B('She is talking on the phone.','Ela está falando ao telefone.','V','BE + verbo-ing.',[['talk','V']]),
+ B('What are you doing?','O que você está fazendo?','O','Pergunta: what + are + you + doing.'),
+ B('I am studying English right now.','Estou estudando inglês agora.','C','Maiúscula em I e English, ponto final.',[['english','C']]),
+ B('They are waiting for the bus.','Eles estão esperando o ônibus.','O','wait for = esperar (precisa de for).'),
+ B('It is raining, and it is cold.','Está chovendo e está frio.','S','Duas orações, dois sujeitos: it ... it.')
+],
+dialog:D('Telefonema com um amigo',[
+ ['n','Hello! What are you doing?','Alô! O que você está fazendo?'],
+ ['y','I am studying English.','Eu estou estudando inglês.'],
+ ['n','Are you at home?','Você está em casa?'],
+ ['y','Yes, I am at home and I am making dinner.','Sim, estou em casa e estou preparando o jantar.'],
+ ['n','Is your brother studying too?','Seu irmão também está estudando?'],
+ ['y','No, he is watching television.','Não, ele está assistindo televisão.']
+])},
+/* ---------------------------------------------------------------- 4 */
+{id:4,title:'Passado regular',icon:'📅',color:'#6b5fb5',desc:'Verbos terminados em -ed: worked, studied, stopped.',
+vocab:[
+ V('work','worked','worked','trabalhar','I worked yesterday.','Eu trabalhei ontem.'),
+ V('study','studied','studied','estudar','She studied for two hours.','Ela estudou por duas horas.','y → ied'),
+ V('play','played','played','jogar / tocar','They played soccer on Sunday.','Eles jogaram futebol no domingo.'),
+ V('stop','stopped','stopped','parar','We stopped at the red light.','Nós paramos no sinal vermelho.','dobra o p'),
+ V('want','wanted','wanted','querer','He wanted a coffee.','Ele queria um café.'),
+ V('watch','watched','watched','assistir','We watched a movie.','Nós assistimos a um filme.')
+],
+quiz:[
+ Q('gap','I ___ English yesterday.','studied','Consoante + y troca o y por -ied.',
+   ['study','V','“yesterday” pede passado.'],['studyed','V','Troque y por i: studied.'],['am studied','V','Não use BE + passado aqui.']),
+ Q('fix','Qual frase está correta? (Ela trabalhou em um banco no ano passado.)','She worked in a bank last year.','last year não leva preposição.',
+   ['She work in a bank last year.','V','Passado regular precisa de -ed: worked.'],['She worked in a bank in last year.','O','Com last (last year, last night) não se usa in.'],['She did worked in a bank last year.','V','did + verbo base, ou só o passado: did work OU worked.']),
+ Q('gap','We ___ TV last night.','watched','Verbos regulares ganham -ed no passado.',
+   ['watch','V','“last night” pede passado.'],['watching','V','-ing não é passado simples.'],['watchs','V','watch + es no presente; no passado: watched.']),
+ Q('tr','Escolha a tradução: “Eu trabalhei ontem.”','I worked yesterday.','Sujeito + verbo no passado + marcador de tempo.',
+   ['Worked yesterday.','S','Sujeito omitido: I worked.'],['I work yesterday.','V','“ontem” exige o passado: worked.'],['i worked yesterday','C','I maiúsculo, frase com maiúscula e ponto final.']),
+ Q('fix','Qual frase está correta? (Liguei para minha irmã, mas ela não atendeu.)','I called my sister, but she did not answer.','O sujeito muda depois de but: precisa de she.',
+   ['I called my sister, but did not answer.','S','Sujeito omitido: quem não atendeu foi ela, então precisa de she.'],['I called my sister, but she not answer.','V','A negação no passado é did not + verbo base.'],['I called my sister, but she did not answered.','V','Depois de did not, o verbo fica na base: answer.']),
+ Q('gap','She did not ___ yesterday.','work','Depois de did not o verbo volta à base.',
+   ['worked','V','O passado já está em did; o verbo fica na base.'],['works','V','Sem -s depois de did not.'],['working','V','Sem -ing depois de did not.']),
+ Q('tr','Escolha a tradução: “Eu comecei a trabalhar em 2020.”','I started working in 2020.','Anos usam in.',
+   ['I started to work at 2020.','O','Para anos use in, não at.'],['I started working on 2020.','O','on é para dias; anos usam in.'],['I start working in 2020.','V','Passado: started.']),
+ Q('gap','They ___ soccer on Sunday.','played','play + ed (vogal antes do y: não troca).',
+   ['plaied','V','Depois de vogal o y fica: played.'],['plays','V','Presente.'],['play','V','Falta o -ed.']),
+ Q('gap','We ___ at the red light.','stopped','Palavra curta com vogal+consoante dobra a consoante: stopped.',
+   ['stoped','V','Dobre o p: stopped.'],['stopt','V','Forma inexistente.'],['stopping','V','-ing não é passado simples.']),
+ Q('fix','Qual frase está correta? (Visitei minha avó domingo passado.)','I visited my grandma last Sunday.','last + dia = sem preposição.',
+   ['I visited my grandma in last Sunday.','O','Com last não se usa preposição.'],['I visited my grandma the last Sunday.','O','Em inglês não se usa the antes de last neste caso.'],['I visit my grandma last Sunday.','V','Passado: visited.'])
+],
+build:[
+ B('I studied English yesterday.','Eu estudei inglês ontem.','C','Maiúscula em I e English.',[['english','C']]),
+ B('She did not work on Monday.','Ela não trabalhou na segunda.','V','did not + verbo base; dia = on.',[['worked','V']]),
+ B('We watched a movie last night.','Nós assistimos a um filme ontem à noite.','O','last night não leva preposição.',[['in','O']]),
+ B('I called my sister, but she did not answer.','Liguei para minha irmã, mas ela não atendeu.','S','Sujeito muda depois de but: she.'),
+ B('He started working in 2020.','Ele começou a trabalhar em 2020.','O','Anos usam in.',[['on','O'],['at','O']])
+],
+dialog:D('Small talk na segunda-feira',[
+ ['n','Hi! How was your weekend?','Oi! Como foi seu fim de semana?'],
+ ['y','It was great. I visited my family.','Foi ótimo. Eu visitei minha família.'],
+ ['n','Nice! Did you cook?','Legal! Você cozinhou?'],
+ ['y','Yes, I cooked dinner for everyone.','Sim, eu cozinhei o jantar para todo mundo.'],
+ ['n','What did you do on Sunday?','O que você fez no domingo?'],
+ ['y','I stayed home and watched television.','Eu fiquei em casa e assisti televisão.']
+])},
+/* ---------------------------------------------------------------- 5 */
+{id:5,title:'Passado irregular',icon:'🧠',color:'#cc5a4c',desc:'go/went, have/had, make/made, see/saw, get/got, take/took.',
+vocab:[
+ V('go','went','gone','ir','I went to the market.','Eu fui ao mercado.'),
+ V('have','had','had','ter / tomar','They had a big house.','Eles tinham uma casa grande.'),
+ V('make','made','made','fazer','She made a cake.','Ela fez um bolo.'),
+ V('see','saw','seen','ver','We saw a movie last night.','Nós vimos um filme ontem à noite.'),
+ V('get','got','got / gotten','conseguir / chegar / pegar','I got here at eight.','Eu cheguei aqui às oito.'),
+ V('take','took','taken','pegar / levar / tomar','He took the bus to work.','Ele pegou o ônibus para o trabalho.')
+],
+quiz:[
+ Q('gap','I ___ to the market yesterday.','went','go é irregular: go → went.',
+   ['goed','V','Verbos irregulares não ganham -ed: went.'],['go','V','“yesterday” pede passado.'],['gone','V','gone é particípio (usado com have).']),
+ Q('gap','She ___ a cake last night.','made','make → made.',
+   ['maked','V','make é irregular: made.'],['make','V','Falta o passado.'],['makes','V','Presente, com -s.']),
+ Q('fix','Qual frase está correta? (Vimos um filme na sexta.)','We saw a movie on Friday.','see → saw; dias usam on.',
+   ['We seen a movie on Friday.','V','seen é particípio. O passado simples é saw.'],['We saw a movie in Friday.','O','Dias usam on, não in.'],['We see a movie on Friday.','V','Passado: saw.']),
+ Q('gap','He ___ the bus at seven.','took','take → took.',
+   ['taked','V','take é irregular: took.'],['taken','V','taken é particípio, não passado simples.'],['take','V','Falta o passado.']),
+ Q('tr','Escolha a tradução: “Eu fui para casa e comi.”','I went home and ate.','home não leva to. Mesmo sujeito ligado por and: pode omitir o segundo I.',
+   ['I went to home and ate.','O','Com home (casa) não se usa to: went home.'],['I went home and eat.','V','Os dois verbos estão no passado: went e ate.'],['Went home and ate.','S','Sujeito omitido no início: a frase precisa começar com I.']),
+ Q('gap','She ___ a new phone last week.','got','get → got.',
+   ['gets','V','Presente.'],['getted','V','get é irregular: got.'],['get','V','Falta o passado.']),
+ Q('fix','Qual frase está correta? (Eu não fui trabalhar ontem.)','I did not go to work yesterday.','did not + verbo na base (go, não went).',
+   ['I did not went to work yesterday.','V','Depois de did not, o verbo volta à base: go.'],['I not went to work yesterday.','V','A negação no passado usa did not.'],['I did not go to work in yesterday.','O','yesterday não leva preposição.']),
+ Q('gap','They ___ a big house in 2019.','had','have → had.',
+   ['haved','V','have é irregular: had.'],['has','V','Presente.'],['have','V','Presente; “in 2019” pede passado.']),
+ Q('tr','Escolha a tradução: “Eu vi um filme ontem à noite.”','I saw a movie last night.','see → saw; last night sem preposição.',
+   ['I seen a movie last night.','V','O passado de see é saw.'],['I saw a movie in the last night.','O','Use last night, sem in e sem the.'],['i saw a movie last night.','C','I maiúsculo e frase começa com maiúscula.']),
+ Q('fix','Qual frase está correta? (Fui à loja, mas estava fechada.)','I went to the store, but it was closed.','O sujeito muda (a loja): repita it.',
+   ['I went to the store, but was closed.','S','Sujeito omitido: quem estava fechada foi a loja → it was closed.'],['I went to the store, but it were closed.','V','it combina com was.'],['I go to the store, but it was closed.','V','Passado: went.'])
+],
+build:[
+ B('I went home and ate dinner.','Eu fui para casa e jantei.','O','home não leva to.',[['to','O']]),
+ B('She made a cake yesterday.','Ela fez um bolo ontem.','V','make → made.',[['maked','V']]),
+ B('We saw a movie last night.','Nós vimos um filme ontem à noite.','V','see → saw.',[['seen','V']]),
+ B('He took the bus to work.','Ele pegou o ônibus para o trabalho.','V','take → took.',[['taken','V']]),
+ B('I did not go to work yesterday.','Eu não fui trabalhar ontem.','V','did not + verbo base.',[['went','V']])
+],
+dialog:D('Aeroporto: bagagem perdida',[
+ ['n','Good morning. How can I help you?','Bom dia. Como posso ajudar?'],
+ ['y','I took the flight from Recife, but my bag did not arrive.','Eu peguei o voo de Recife, mas minha mala não chegou.'],
+ ['n','I am sorry. What time did you get here?','Sinto muito. Que horas você chegou aqui?'],
+ ['y','I got here at eight o\'clock.','Eu cheguei aqui às oito horas.'],
+ ['n','What does your bag look like?','Como é a sua mala?'],
+ ['y','It is big and black.','Ela é grande e preta.']
+])},
+/* ---------------------------------------------------------------- 6 */
+{id:6,title:'Futuro',icon:'🚀',color:'#2b7bb9',desc:'will e be going to: planos e previsões.',
+vocab:[
+ V('will + verbo','would','—','vou / irei (decisão, previsão)','I will call you tomorrow.','Eu vou ligar para você amanhã.'),
+ V('be going to','—','—','vou (plano)','I am going to travel in July.','Eu vou viajar em julho.'),
+ V('plan','planned','planned','planejar','We plan to visit Lisbon.','Nós planejamos visitar Lisboa.'),
+ V('travel','traveled','traveled','viajar','She will travel next week.','Ela vai viajar na semana que vem.'),
+ V('meet','met','met','encontrar','We will meet on Friday.','Nós vamos nos encontrar na sexta.'),
+ V('call','called','called','ligar','He will call you later.','Ele vai ligar para você mais tarde.')
+],
+quiz:[
+ Q('gap','I ___ call you tomorrow.','will','will + verbo base.',
+   ['am','V','Precisaria de going to: I am going to call.'],['going','V','Faltou am: I am going to call.'],['do','V','do não forma futuro.']),
+ Q('fix','Qual frase está correta? (Ela vai viajar semana que vem.)','She is going to travel next week.','be going to + verbo base.',
+   ['She going to travel next week.','V','Faltou is: she is going to travel.'],['She is going travel next week.','V','Faltou to: going to travel.'],['She will to travel next week.','V','Depois de will o verbo vem direto, sem to.']),
+ Q('tr','Escolha a tradução: “Vou viajar em dezembro.”','I am going to travel in December.','Meses usam in e têm maiúscula.',
+   ['I am going to travel on December.','O','Meses usam in, não on.'],['I go to travel in December.','V','Futuro com plano: am going to.'],['I am going to travel in december.','C','Meses têm maiúscula: December.']),
+ Q('gap','We will meet ___ Friday.','on','Dias usam on.',
+   ['in','O','in é para meses, anos e partes do dia.'],['at','O','at é para horas.'],['to','O','to não é usado com dia.']),
+ Q('gap','The meeting is ___ 3 o\'clock.','at','Horas usam at.',
+   ['on','O','on é para dias.'],['in','O','in é para meses/anos/partes do dia.'],['to','O','to não indica hora.']),
+ Q('fix','Qual frase está correta? (Eu não vou à festa.)','I will not go to the party.','will not + verbo base.',
+   ['I will not to go to the party.','V','Sem to depois de will not.'],['I do not will go to the party.','V','will já é o auxiliar; não use do.'],['I not will go to the party.','V','A negação vem depois de will: will not.']),
+ Q('tr','Escolha a tradução: “Vai chover amanhã.”','It is going to rain tomorrow.','Sujeito it é obrigatório em previsões de clima.',
+   ['Is going to rain tomorrow.','S','Sujeito omitido: precisa de it.'],['Will rain tomorrow.','S','Sujeito omitido: it will rain.'],['It going to rain tomorrow.','V','Faltou is.']),
+ Q('gap','___ you going to study tonight?','Are','Perguntas com going to começam com o BE conjugado.',
+   ['Do','V','Não use do com going to.'],['Is','V','is não combina com you.'],['Will','V','Will não vem com going to.']),
+ Q('fix','Qual frase está correta? (Vou estudar inglês na segunda-feira.)','I will study English on Monday.','Dia da semana: on, com maiúscula.',
+   ['I will study English in Monday.','O','Dias usam on.'],['i will study english on monday.','C','Maiúsculas: I, English, Monday.'],['I will study English at Monday.','O','at é para horas; dias usam on.'])
+],
+build:[
+ B('I will call you tomorrow.','Eu vou ligar para você amanhã.','V','will + verbo base.',[['to','V']]),
+ B('She is going to travel in July.','Ela vai viajar em julho.','O','Meses usam in.',[['on','O']]),
+ B('We are going to meet on Friday.','Nós vamos nos encontrar na sexta.','O','Dias usam on.',[['in','O']]),
+ B('It is going to rain tomorrow.','Vai chover amanhã.','S','Precisa do sujeito it.'),
+ B('They will not come to the party.','Eles não virão à festa.','V','will not + verbo base.')
+],
+dialog:D('Restaurante',[
+ ['n','Hello! Are you ready to order?','Olá! Você está pronto para pedir?'],
+ ['y','Yes, I will have the chicken, please.','Sim, eu vou querer o frango, por favor.'],
+ ['n','Anything to drink?','Algo para beber?'],
+ ['y','I am going to have water.','Eu vou tomar água.'],
+ ['n','Would you like dessert later?','Você quer sobremesa depois?'],
+ ['y','Yes, I will see the menu later.','Sim, eu vou ver o cardápio depois.']
+])},
+/* ---------------------------------------------------------------- 7 */
+{id:7,title:'Can / Could / Should',icon:'🔑',color:'#0f8b8d',desc:'Habilidade, pedidos educados e conselhos.',
+vocab:[
+ V('can','could','—','poder / saber','She can speak three languages.','Ela sabe falar três idiomas.'),
+ V('could','—','—','poderia (pedido educado) / podia','Could you help me, please?','Você poderia me ajudar, por favor?'),
+ V('should','—','—','deveria (conselho)','You should see a doctor.','Você deveria ir ao médico.'),
+ V('must','—','—','precisar / ter que (regra)','You must wear a seat belt.','Você precisa usar cinto de segurança.'),
+ V('have to','had to','had to','ter que','I have to work tomorrow.','Eu tenho que trabalhar amanhã.'),
+ V('need to','needed to','needed to','precisar','We need to leave now.','Nós precisamos sair agora.')
+],
+quiz:[
+ Q('gap','She ___ speak three languages.','can','can não muda com she e vem direto antes do verbo base.',
+   ['cans','V','can nunca leva -s.'],['can to','V','Sem to depois de can.'],['is can','V','Não use BE com can.']),
+ Q('fix','Como pedir ajuda: “Você pode me ajudar?”','Can you help me?','Pergunta com can: can + sujeito + verbo base.',
+   ['Can you to help me?','V','Sem to depois de can.'],['You can help me?','O','Perguntas precisam da inversão: can antes do sujeito.'],['Do you can help me?','V','can já é o auxiliar; não use do.']),
+ Q('gap','You ___ see a doctor. You look sick.','should','should + verbo base para conselho.',
+   ['should to','V','Sem to depois de should.'],['shoulds','V','should nunca leva -s.'],['must to','V','must também não leva to.']),
+ Q('tr','Escolha a tradução: “Eu não posso ir hoje.”','I cannot go today.','Negativa: cannot / can not + verbo base.',
+   ['I no can go today.','V','Em inglês a negação é cannot (can not), não “no can”.'],['I do not can go today.','V','can já é o auxiliar; não use do.'],['Cannot go today.','S','Sujeito omitido: I cannot go.']),
+ Q('gap','___ you open the window, please?','Could','Pedido educado: Could you...?',
+   ['Did','V','Did + verbo base seria passado, sem sentido de pedido.'],['Are','V','Are + you + verbo-ing é contínuo.'],['Have','V','Have não forma pedidos.']),
+ Q('fix','Qual frase está correta? (Ele deveria estudar mais.)','He should study more.','should + verbo base, sem -s.',
+   ['He shoulds study more.','V','should nunca leva -s.'],['He should studies more.','V','Depois de should o verbo fica na base.'],['He should to study more.','V','Sem to depois de should.']),
+ Q('tr','Escolha a tradução: “Quando eu era criança, eu sabia nadar.”','When I was a child, I could swim.','could = habilidade no passado; criança leva a.',
+   ['When I was a child, I can swim.','V','Passado: could.'],['When I was child, I could swim.','O','Precisa do artigo: a child.'],['when i was a child, i could swim','C','Maiúsculas (When, I) e ponto final.']),
+ Q('tr','Escolha a tradução: “Posso entrar?”','Can I come in?','Pergunta com sujeito explícito e inversão.',
+   ['Can come in?','S','Sujeito omitido: precisa de I.'],['I can come in?','O','Inversão: can I, não I can.'],['Can I to come in?','V','Sem to depois de can.']),
+ Q('gap','You ___ wear a seat belt. It is the law.','must','must + verbo base para regra/obrigação.',
+   ['must to','V','Sem to depois de must.'],['musts','V','must nunca leva -s.'],['are must','V','Não use BE com must.'])
+],
+build:[
+ B('Can I come in?','Posso entrar?','O','Pergunta: can + I + verbo.'),
+ B('You should see a doctor.','Você deveria ir ao médico.','V','should + verbo base (sem to).',[['to','V']]),
+ B('She can speak English very well.','Ela fala inglês muito bem.','C','English com maiúscula.',[['english','C']]),
+ B('Could you help me, please?','Você poderia me ajudar, por favor?','O','Pedido educado: Could + you + verbo.'),
+ B('I cannot go today, but I can go tomorrow.','Não posso ir hoje, mas posso ir amanhã.','S','Depois de but, nova oração: repita I.')
+],
+dialog:D('Banco',[
+ ['n','Good afternoon. How can I help you?','Boa tarde. Como posso ajudar?'],
+ ['y','Can I open an account today?','Posso abrir uma conta hoje?'],
+ ['n','Yes, you can. Could you show me your ID?','Sim, pode. Você poderia me mostrar seu documento?'],
+ ['y','Sure, here it is.','Claro, aqui está.'],
+ ['n','Thank you. You should read this form first.','Obrigado. Você deveria ler este formulário primeiro.'],
+ ['y','Okay, I will read it now.','Certo, eu vou ler agora.']
+])},
+/* ---------------------------------------------------------------- 8 */
+{id:8,title:'Phrasal verbs',icon:'🧩',color:'#d98324',desc:'get up, look for, find out, give up e mais.',
+vocab:[
+ V('get up','got up','gotten up','levantar-se','I get up at six.','Eu me levanto às seis.'),
+ V('look for','looked for','looked for','procurar','I am looking for my keys.','Estou procurando minhas chaves.'),
+ V('find out','found out','found out','descobrir','I found out the answer.','Eu descobri a resposta.'),
+ V('give up','gave up','given up','desistir','Do not give up!','Não desista!'),
+ V('turn on','turned on','turned on','ligar (aparelho)','Can you turn on the light?','Você pode ligar a luz?'),
+ V('come back','came back','come back','voltar','She came back on Monday.','Ela voltou na segunda.')
+],
+quiz:[
+ Q('gap','I ___ up at six every day.','get','Presente simples com I: get up.',
+   ['am get','V','Não use BE + verbo base.'],['getting','V','-ing precisaria de am.'],['gets','V','-s só com he/she/it.']),
+ Q('fix','Qual frase está correta? (Estou procurando minhas chaves.)','I am looking for my keys.','look for = procurar. Sem o for, muda o sentido.',
+   ['I am looking my keys.','O','Em português “procurar” não tem preposição, mas em inglês precisa de for.'],['I am looking at my keys.','O','look at = olhar para. O sentido é procurar: look for.'],['I am look for my keys.','V','Faltou -ing: looking.']),
+ Q('tr','Escolha a tradução: “Eu descobri a verdade.”','I found out the truth.','find out → found out.',
+   ['I discovered out the truth.','V','O phrasal verb é find out: found out.'],['I find out the truth.','V','Passado: found out.'],['I founded out the truth.','V','find é irregular: found.']),
+ Q('gap','Do not ___ up! You can do it.','give','Depois de do not o verbo fica na base.',
+   ['gives','V','Sem -s depois de do not.'],['gave','V','Sem passado depois de do not.'],['giving','V','Sem -ing depois de do not.']),
+ Q('fix','Qual frase está correta? (Ela acordou tarde, então perdeu o ônibus.)','She got up late, so she missed the bus.','so abre nova oração: repita o sujeito.',
+   ['She got up late, so missed the bus.','S','Sujeito omitido depois de “so”: so she missed.'],['She get up late, so she missed the bus.','V','Passado: got up.'],['she got up late, so she missed the bus','C','Maiúscula no início e ponto final.']),
+ Q('tr','Escolha a tradução: “Preciso procurar um emprego.”','I need to look for a job.','need to + verbo base; emprego leva a.',
+   ['I need look for a job.','V','need pede to: need to look.'],['I need to look a job.','O','Faltou for: look for.'],['I need to look for job.','O','Precisa do artigo: a job.']),
+ Q('gap','Can you turn ___ the light?','on','turn on = ligar.',
+   ['in','O','turn in significa entregar.'],['at','O','turn at não é um phrasal verb.'],['to','O','turn to significa virar-se para.']),
+ Q('gap','He ___ back at five yesterday.','came','come → came.',
+   ['comed','V','come é irregular: came.'],['come','V','“yesterday” pede passado.'],['coming','V','Precisaria de was.']),
+ Q('fix','Qual frase está correta? (Vou descobrir a resposta amanhã.)','I will find out the answer tomorrow.','will + verbo base; tomorrow sem preposição.',
+   ['I find out the answer tomorrow.','V','Para futuro: will find out.'],['I will find out the answer in tomorrow.','O','tomorrow não leva preposição.'],['I will find out the answer tomorrow','C','Faltou o ponto final.'])
+],
+build:[
+ B('I get up at six.','Eu me levanto às seis.','O','Hora exata: at six.',[['in','O']]),
+ B('I am looking for my keys.','Estou procurando minhas chaves.','O','look for = procurar.',[['at','O']]),
+ B('Do not give up!','Não desista!','V','Do not + verbo base.',[['gives','V']]),
+ B('I found out the answer yesterday.','Eu descobri a resposta ontem.','V','find out → found out.',[['find','V']]),
+ B('She came back on Monday.','Ela voltou na segunda.','O','Dia da semana: on.',[['in','O'],['monday','C']])
+],
+dialog:D('Aeroporto: procurando o portão',[
+ ['n','Excuse me, can I help you?','Com licença, posso ajudar?'],
+ ['y','Yes, I am looking for gate twelve.','Sim, estou procurando o portão doze.'],
+ ['n','Gate twelve is on the left. Did you find out your flight time?','O portão doze fica à esquerda. Você descobriu o horário do seu voo?'],
+ ['y','Yes, I found out it leaves at nine o\'clock.','Sim, eu descobri que ele sai às nove horas.'],
+ ['n','Great! Do not give up, you have time.','Ótimo! Não desista, você tem tempo.'],
+ ['y','Thank you for your help.','Obrigado pela sua ajuda.']
+])},
+/* ---------------------------------------------------------------- 9 */
+{id:9,title:'Perguntas (do / does / did)',icon:'❓',color:'#2b7bb9',desc:'Perguntas sem esquecer o do/does/did e a ordem das palavras.',
+vocab:[
+ V('ask','asked','asked','perguntar / pedir','Can I ask a question?','Posso fazer uma pergunta?'),
+ V('answer','answered','answered','responder','She did not answer my email.','Ela não respondeu meu e-mail.'),
+ V('need','needed','needed','precisar','Do you need help?','Você precisa de ajuda?'),
+ V('like','liked','liked','gostar','Does he like coffee?','Ele gosta de café?'),
+ V('know','knew','known','saber / conhecer','Do you know the manager?','Você conhece o gerente?'),
+ V('think','thought','thought','pensar / achar','What do you think?','O que você acha?')
+],
+quiz:[
+ Q('fix','Como perguntar “Você trabalha em Recife?”','Do you work in Recife?','Perguntas no presente simples começam com do/does + sujeito + verbo base.',
+   ['You work in Recife?','O','Em português só muda a entonação; em inglês a pergunta precisa de do no início.'],
+   ['Work you in Recife?','O','Ordem errada. É do + you + verbo, não verbo + sujeito.'],
+   ['Does you work in Recife?','V','Com you usamos do. does é só para he/she/it.']),
+ Q('gap','___ she live in Recife?','Does','Com she/he/it a pergunta usa does.',
+   ['Do','V','do é para I/you/we/they.'],['Is','V','is + live não forma pergunta no presente simples.'],['Did','V','did é passado; a frase está no presente.']),
+ Q('fix','Qual frase está correta? (Ele gosta de café?)','Does he like coffee?','Depois de does o verbo volta à base: like, sem -s.',
+   ['Does he likes coffee?','V','O -s já está em does. O verbo fica na base: like.'],
+   ['Do he like coffee?','V','Com he usamos does.'],
+   ['He likes coffee?','O','Falta o auxiliar does no início da pergunta.']),
+ Q('tr','Escolha a tradução: “Você falou com o cliente ontem?”','Did you talk to the client yesterday?','Passado: did + sujeito + verbo base.',
+   ['You talked to the client yesterday?','O','Falta did no início da pergunta.'],
+   ['Did you talked to the client yesterday?','V','Depois de did o verbo volta à base: talk.'],
+   ['Do you talk to the client yesterday?','V','“Ontem” pede passado: did.']),
+ Q('gap','What time ___ the meeting start?','does','the meeting = it (3ª pessoa) → does.',
+   ['do','V','do não combina com the meeting.'],['is','V','is + start precisaria de -ing.'],['are','V','are não combina com the meeting.']),
+ Q('fix','Como perguntar “Onde você trabalha?”','Where do you work?','Palavra interrogativa + do/does + sujeito + verbo base.',
+   ['Where you work?','O','Falta o do depois de where.'],
+   ['Where work you?','O','Ordem errada: where + do + you + work.'],
+   ['Where do you works?','V','Depois de do o verbo fica na base: work.']),
+ Q('tr','Escolha a tradução: “Quantos anos você tem?”','How old are you?','Idade usa BE, também na pergunta.',
+   ['How many years do you have?','O','Tradução literal. Em inglês: How old are you?'],
+   ['How old have you?','O','Idade não usa have. Use are.'],
+   ['How old you are?','O','Na pergunta o verbo vem antes do sujeito: are you.']),
+ Q('tr','Escolha a tradução: “Está chovendo aí?”','Is it raining there?','Pergunta com BE: Is + sujeito (it) + verbo-ing.',
+   ['Is raining there?','S','Sujeito omitido: precisa de it.'],
+   ['It is raining there?','O','Na pergunta o BE vem antes do sujeito: Is it.'],
+   ['Does it raining there?','V','does não combina com -ing.']),
+ Q('fix','Qual frase está correta? (Ela ligou para você?)','Did she call you?','did + sujeito + verbo base.',
+   ['Did she called you?','V','Depois de did o verbo fica na base: call.'],
+   ['Does she call you yesterday?','V','Passado pede did.'],
+   ['She did call you?','O','Na pergunta did vem primeiro.']),
+ Q('gap','Where ___ you go yesterday?','did','Passado: where + did + you + verbo base.',
+   ['do','V','“yesterday” pede did.'],['are','V','are não forma o passado.'],['were','V','were + go não forma pergunta no passado simples.'])
+],
+build:[
+ B('Do you work on Saturdays?','Você trabalha aos sábados?','V','Pergunta no presente: do + you + verbo base.',[['does','V']]),
+ B('Does she live in Recife?','Ela mora em Recife?','V','Com she: does + verbo base (sem -s).',[['lives','V']]),
+ B('What time does the meeting start?','Que horas a reunião começa?','V','what time + does + sujeito + verbo base.',[['starts','V']]),
+ B('Did you talk to the client yesterday?','Você falou com o cliente ontem?','V','did + verbo base.',[['talked','V']]),
+ B('Where did you go last night?','Onde você foi ontem à noite?','V','did + verbo base: go, não went.',[['went','V']])
+],
+dialog:D('Primeiro dia no trabalho: você faz as perguntas',[
+ ['n','Welcome to the team! Do you have any questions?','Bem-vindo à equipe! Você tem alguma pergunta?'],
+ ['y','Yes, what time does the meeting start?','Sim, que horas a reunião começa?'],
+ ['n','At ten o\'clock, in room four.','Às dez, na sala quatro.'],
+ ['y','Does the client come to the meeting?','O cliente vem à reunião?'],
+ ['n','Yes, he does. He called me yesterday.','Sim, vem. Ele me ligou ontem.'],
+ ['y','Did you send me the agenda?','Você me enviou a pauta?']
+])},
+/* ---------------------------------------------------------------- 10 */
+{id:10,title:'Must / Have to',icon:'📌',color:'#cc5a4c',desc:'Obrigação, proibição e “não precisa”: must, have to, do not have to.',
+vocab:[
+ V('must','—','—','ter que / dever (regra)','You must wear a badge.','Você deve usar crachá.'),
+ V('have to','had to','had to','ter que (obrigação)','I have to work on Saturday.','Eu tenho que trabalhar no sábado.','has to com he/she/it'),
+ V('do not have to','—','—','não precisar (não é obrigado)','You do not have to come tomorrow.','Você não precisa vir amanhã.'),
+ V('must not','—','—','é proibido','You must not park here.','É proibido estacionar aqui.'),
+ V('should not','—','—','não deveria','You should not be late.','Você não deveria se atrasar.'),
+ V('need to','needed to','needed to','precisar','We need to leave now.','Nós precisamos sair agora.')
+],
+quiz:[
+ Q('gap','I ___ work on Saturday. We have a deadline.','have to','I/you/we/they + have to + verbo base.',
+   ['has to','V','has to é para he/she/it.'],['must to','V','must nunca leva to.'],['am have to','V','Não use BE com have to.']),
+ Q('gap','She ___ finish the report today.','has to','she → has to.',
+   ['have to','V','Com she usamos has to.'],['must to','V','must nunca leva to.'],['haves to','V','Forma inexistente: has to.']),
+ Q('fix','Qual frase está correta? (É proibido estacionar aqui.)','You must not park here.','must not + verbo base = proibição.',
+   ['You not must park here.','V','A negação vem depois de must: must not.'],
+   ['You do not must park here.','V','must já é o auxiliar; não use do.'],
+   ['You must not to park here.','V','Sem to depois de must not.']),
+ Q('tr','Escolha a tradução: “Você não precisa vir amanhã.”','You do not have to come tomorrow.','do not have to = não é obrigado. Não confunda com must not (proibido).',
+   ['You must not come tomorrow.','O','Tradução literal perigosa: must not significa “é proibido”, não “não precisa”.'],
+   ['You not have to come tomorrow.','V','A negação de have to usa do not.'],
+   ['Do not have to come tomorrow.','S','Sujeito omitido: precisa de You.']),
+ Q('fix','Como perguntar “Ele tem que trabalhar aos sábados?”','Does he have to work on Saturdays?','Pergunta: does + sujeito + have to + verbo base.',
+   ['Has he to work on Saturdays?','V','Em inglês moderno usamos does he have to.'],
+   ['Does he has to work on Saturdays?','V','Depois de does o verbo fica na base: have.'],
+   ['He have to work on Saturdays?','O','Falta does e have vira has/have conforme o auxiliar.']),
+ Q('gap','You ___ smoke here. It is not allowed.','must not','Proibição = must not.',
+   ['do not have to','O','do not have to = não precisa; aqui é proibido.'],['have not to','V','Forma incorreta: do not have to ou must not.'],['not must','V','A ordem é must not.']),
+ Q('tr','Escolha a tradução: “Eu tive que trabalhar ontem.”','I had to work yesterday.','Passado de have to = had to.',
+   ['I must work yesterday.','V','must não tem passado; use had to.'],
+   ['I have to work yesterday.','V','“Ontem” pede had to.'],
+   ['I had to worked yesterday.','V','Depois de had to o verbo fica na base: work.']),
+ Q('fix','Qual frase está correta? (Ele deveria descansar.)','He should rest.','should + verbo base, sem -s e sem to.',
+   ['He should rests.','V','Sem -s depois de should.'],['He should to rest.','V','Sem to depois de should.'],['He must to rest.','V','must também não leva to.']),
+ Q('fix','Qual frase está correta? (Eu estava cansado, então tive que descansar.)','I was tired, so I had to rest.','so abre uma nova oração: repita o sujeito.',
+   ['I was tired, so had to rest.','S','Sujeito omitido depois de “so”: so I had to rest.'],
+   ['i was tired, so i had to rest.','C','“I” sempre maiúsculo.'],
+   ['I was tired, so I have to rest.','V','Passado: had to.'])
+],
+build:[
+ B('I have to work on Saturday.','Eu tenho que trabalhar no sábado.','V','I + have to + verbo base.',[['has','V']]),
+ B('She has to finish the report today.','Ela tem que terminar o relatório hoje.','V','she → has to.',[['have','V']]),
+ B('You must not park here.','É proibido estacionar aqui.','V','must not + verbo base.',[['do','V']]),
+ B('You do not have to come tomorrow.','Você não precisa vir amanhã.','O','“não precisa” = do not have to (must not é proibição).',[['must','O']]),
+ B('I had to work yesterday.','Eu tive que trabalhar ontem.','V','Passado de have to = had to.',[['have','V']])
+],
+dialog:D('Regras no trabalho',[
+ ['n','Welcome! First rule: you must wear your badge.','Bem-vindo! Primeira regra: você deve usar o crachá.'],
+ ['y','Okay, I must wear my badge.','Certo, eu devo usar meu crachá.'],
+ ['n','Do you have to work on Saturdays?','Você tem que trabalhar aos sábados?'],
+ ['y','No, I do not have to work on Saturdays.','Não, eu não preciso trabalhar aos sábados.'],
+ ['n','Good. And you must not use your phone in meetings.','Ótimo. E você não deve usar o celular em reuniões.'],
+ ['y','I understand. I should turn it off.','Entendi. Eu deveria desligá-lo.']
+])},
+/* ---------------------------------------------------------------- 11 */
+{id:11,title:'Present perfect',icon:'✅',color:'#6b5fb5',desc:'have/has + particípio: experiências, algo já feito e há quanto tempo.',
+vocab:[
+ V('be','was / were','been','ser / estar / ir (experiência)','I have been to London.','Eu já fui a Londres.'),
+ V('do','did','done','fazer','I have done my homework.','Eu já fiz minha lição.'),
+ V('see','saw','seen','ver','Have you seen this movie?','Você já viu esse filme?'),
+ V('go','went','gone','ir','She has gone to the bank.','Ela foi ao banco (e não voltou).'),
+ V('finish','finished','finished','terminar','I have finished the report.','Eu terminei o relatório.'),
+ V('send','sent','sent','enviar','She has sent the email.','Ela enviou o e-mail.')
+],
+quiz:[
+ Q('gap','I ___ finished the report.','have','Present perfect = have/has + particípio. I → have.',
+   ['has','V','has é para he/she/it.'],['am','V','am + particípio forma voz passiva, não present perfect.'],['did','V','did + particípio não existe.']),
+ Q('gap','She ___ sent the email.','has','she → has + particípio.',
+   ['have','V','Com she usamos has.'],['is','V','is + sent mudaria o sentido (foi enviado).'],['did','V','did + particípio não existe.']),
+ Q('fix','Qual frase está correta? (Eu já vi este filme.)','I have seen this film.','see → saw (passado) → seen (particípio). Present perfect usa o particípio.',
+   ['I have saw this film.','V','Depois de have use o particípio: seen, não saw.'],
+   ['I seen this film.','V','Faltou o auxiliar have.'],
+   ['I have see this film.','V','Depois de have use o particípio: seen.']),
+ Q('tr','Escolha a tradução: “Eu nunca fui a Londres.”','I have never been to London.','Experiência de vida: have never been to + lugar (maiúscula).',
+   ['I never went to London.','V','Para experiência de vida até hoje, use have never been.'],
+   ['I have never been in London.','O','Ir a um lugar = been to, não in.'],
+   ['I have never been to london.','C','Cidades têm maiúscula: London.']),
+ Q('fix','Como perguntar “Você terminou o relatório?”','Have you finished the report?','Pergunta: have/has + sujeito + particípio.',
+   ['Did you have finished the report?','V','Não misture did com have + particípio.'],
+   ['You have finished the report?','O','Na pergunta have vem antes do sujeito.'],
+   ['Has you finished the report?','V','Com you usamos have.']),
+ Q('gap','He has already ___ the email.','sent','send → sent → sent.',
+   ['send','V','Depois de has use o particípio: sent.'],['sended','V','send é irregular: sent.'],['sending','V','-ing não é particípio passado.']),
+ Q('tr','Escolha a tradução: “Eu já vi esse filme.”','I have already seen this movie.','have + already + particípio.',
+   ['I have already see this movie.','V','Particípio: seen.'],
+   ['I am already seen this movie.','V','Use have, não am.'],
+   ['Have already seen this movie.','S','Sujeito omitido: I have already seen.']),
+ Q('fix','Qual frase está correta? (Trabalho aqui há dois anos.)','I have worked here for two years.','“Há dois anos” = have + particípio + for + período.',
+   ['I work here since two years.','O','Tradução literal de “há”. Use present perfect + for.'],
+   ['I have worked here since two years.','O','since + data de início; for + duração (for two years).'],
+   ['I am working here for two years.','V','Para algo que começou no passado e continua, use present perfect.']),
+ Q('gap','I have lived here ___ 2020.','since','since + ponto de início (2020). for + duração.',
+   ['for','O','for é para duração (for two years).'],['in','O','in 2020 pede passado simples; com have lived use since.'],['from','O','from não é usado com present perfect assim.'])
+],
+build:[
+ B('I have finished the report.','Eu terminei o relatório.','V','have + particípio.',[['finish','V']]),
+ B('She has sent the email.','Ela enviou o e-mail.','V','has + particípio: sent.',[['send','V']]),
+ B('I have never been to London.','Eu nunca fui a Londres.','C','Cidade com maiúscula.',[['london.','C'],['went','V']]),
+ B('I have worked here for two years.','Trabalho aqui há dois anos.','O','for + duração.',[['since','O']]),
+ B('Have you seen this movie?','Você já viu esse filme?','V','have + sujeito + particípio.',[['saw','V']])
+],
+dialog:D('Conversa de trabalho: progresso',[
+ ['n','Hi! Have you finished the report?','Oi! Você terminou o relatório?'],
+ ['y','Yes, I have finished it.','Sim, eu terminei.'],
+ ['n','Great. Have you sent the email to the client?','Ótimo. Você enviou o e-mail ao cliente?'],
+ ['y','No, I have not sent it yet.','Não, eu ainda não enviei.'],
+ ['n','How long have you worked here?','Há quanto tempo você trabalha aqui?'],
+ ['y','I have worked here for two years.','Eu trabalho aqui há dois anos.']
+])},
+/* ---------------------------------------------------------------- 12 */
+{id:12,title:'Inglês para o trabalho',icon:'💼',color:'#0f8b8d',desc:'Verbos de reunião e e-mail: send, attach, schedule, join, reply, attend.',
+vocab:[
+ V('send','sent','sent','enviar','I will send the report tomorrow.','Eu vou enviar o relatório amanhã.'),
+ V('attach','attached','attached','anexar','I am attaching the report.','Estou anexando o relatório.'),
+ V('schedule','scheduled','scheduled','marcar / agendar','I scheduled the meeting for Tuesday.','Eu marquei a reunião para terça.'),
+ V('join','joined','joined','participar / entrar (reunião online)','Can you join us at three?','Você pode se juntar a nós às três?'),
+ V('reply','replied','replied','responder (e-mail)','I replied to the email yesterday.','Eu respondi ao e-mail ontem.','reply TO'),
+ V('attend','attended','attended','comparecer / participar','I need to attend the meeting.','Preciso comparecer à reunião.','attend ≠ assistir (falso cognato)')
+],
+quiz:[
+ Q('gap','I will ___ the report tomorrow.','send','will + verbo base.',
+   ['sends','V','Sem -s depois de will.'],['sent','V','Sem passado depois de will.'],['sending','V','Sem -ing depois de will.']),
+ Q('tr','Escolha a tradução: “Estou anexando o relatório.”','I am attaching the report.','Presente contínuo para o que você está fazendo agora, no e-mail.',
+   ['I am attach the report.','V','Faltou -ing: attaching.'],
+   ['Am attaching the report.','S','Sujeito omitido: I am attaching.'],
+   ['I attached the report now.','V','“Agora” pede presente contínuo.']),
+ Q('fix','Como pedir educadamente: “Você poderia me enviar a pauta?”','Could you send me the agenda, please?','Could + you + verbo base.',
+   ['Could you to send me the agenda, please?','V','Sem to depois de could.'],
+   ['You could send me the agenda, please?','O','Pedido educado: Could vem antes do sujeito.'],
+   ['Could send me the agenda, please?','S','Sujeito omitido: Could you...']),
+ Q('gap','The meeting is ___ Tuesday.','on','Dias da semana usam on.',
+   ['in','O','in é para meses, anos e partes do dia.'],['at','O','at é para horas.'],['to','O','to não indica data.']),
+ Q('tr','Escolha a tradução: “Eu respondi ao e-mail ontem.”','I replied to the email yesterday.','reply to + e-mail; passado de reply = replied.',
+   ['I replied the email yesterday.','O','Em inglês é reply to.'],
+   ['I reply to the email yesterday.','V','“Ontem” pede passado: replied.'],
+   ['I replyed to the email yesterday.','V','Consoante + y vira -ied: replied.']),
+ Q('fix','Qual frase está correta? (Vou entrar na reunião às dez.)','I will join the meeting at ten.','Hora exata usa at.',
+   ['I will to join the meeting at ten.','V','Sem to depois de will.'],
+   ['I will join the meeting on ten.','O','Horas usam at.'],
+   ['I join will the meeting at ten.','O','Ordem errada: will vem antes do verbo.']),
+ Q('tr','Escolha a tradução: “Obrigado pelo seu e-mail.”','Thank you for your email.','Agradecer por algo = thank you for.',
+   ['Thank you by your email.','O','“pelo” vira for, não by.'],
+   ['Thanks you for your email.','V','thanks sozinho; ou thank you.'],
+   ['Thank you for you email.','V','your (seu) é diferente de you (você).']),
+ Q('gap','She has already ___ the invitation.','sent','has + particípio: sent.',
+   ['send','V','Particípio: sent.'],['sended','V','send é irregular: sent.'],['sending','V','-ing não é particípio passado.']),
+ Q('fix','Qual frase está correta? (Marquei a reunião, mas ele cancelou.)','I scheduled the meeting, but he canceled it.','O sujeito muda depois de but: precisa de he.',
+   ['I scheduled the meeting, but canceled it.','S','Sujeito omitido: quem cancelou foi ele, então precisa de he.'],
+   ['I scheduled the meeting, but he cancel it.','V','Passado: canceled.'],
+   ['i scheduled the meeting, but he canceled it','C','I maiúsculo e ponto final.']),
+ Q('tr','Escolha a tradução: “Eu preciso participar da reunião.”','I need to attend the meeting.','attend = comparecer. Não é assistir.',
+   ['I need attend the meeting.','V','need pede to: need to attend.'],
+   ['I need to attend to the meeting.','O','attend to significa cuidar de. Aqui basta attend.'],
+   ['I need to assist the meeting.','O','assist = ajudar (falso cognato de “assistir”).'])
+],
+build:[
+ B('I will send the report tomorrow.','Eu vou enviar o relatório amanhã.','V','will + verbo base.',[['sent','V']]),
+ B('Could you send me the agenda, please?','Você poderia me enviar a pauta?','V','Could + you + verbo base.',[['to','V']]),
+ B('The meeting is on Tuesday at three o\'clock.','A reunião é na terça às três horas.','O','Dia = on, hora = at.',[['in','O']]),
+ B('I replied to the email yesterday.','Eu respondi ao e-mail ontem.','V','Passado: replied.',[['reply','V']]),
+ B('Thank you for your email.','Obrigado pelo seu e-mail.','O','thank you FOR.',[['by','O']])
+],
+dialog:D('Telefonema profissional',[
+ ['n','Hello, this is Anna from the sales team. How can I help you?','Olá, aqui é a Anna do time de vendas. Como posso ajudar?'],
+ ['y','Hello, I am calling about the meeting on Tuesday.','Olá, estou ligando sobre a reunião de terça.'],
+ ['n','Yes. Can you join us at three o\'clock?','Sim. Você pode se juntar a nós às três?'],
+ ['y','Yes, I can join you at three o\'clock.','Sim, posso me juntar a vocês às três.'],
+ ['n','Great. Please send me the report before the meeting.','Ótimo. Por favor, me envie o relatório antes da reunião.'],
+ ['y','Sure, I will send the report tomorrow.','Claro, eu vou enviar o relatório amanhã.']
+])}
+];
+
+/* =====================================================================
+   UTILITÁRIOS
+   ===================================================================== */
+const TEST=location.hash==='#selftest';
+const $=(s,r)=>(r||document).querySelector(s);
+const $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
+const app=$('#app');
+function view(html){stopAudio();app.innerHTML=html;window.scrollTo(0,0);}
+let toastT=null;
+function toast(msg){let t=$('.toast');if(t)t.remove();t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);clearTimeout(toastT);toastT=setTimeout(()=>t.remove(),3500);}
+function pop(el,txt){if(TEST)return;const r=el.getBoundingClientRect();const p=document.createElement('div');p.className='xp-pop';p.textContent=txt;p.style.left=(r.left+r.width/2-20)+'px';p.style.top=(r.top)+'px';document.body.appendChild(p);setTimeout(()=>p.remove(),950);}
+
+/* ---------------- armazenamento (localStorage com try/catch) ---------------- */
+const KEY='verbup-a2-v1';
+const defState=()=>({xp:0,streak:0,last:null,done:{},review:{},rate:1});
+let S=defState();
+(function loadState(){try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(defState(),JSON.parse(r));}catch(e){}})();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+const dstr=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function touchStreak(){const t=dstr(new Date());if(S.last===t)return;const y=new Date();y.setDate(y.getDate()-1);S.streak=(S.last===dstr(y))?S.streak+1:1;S.last=t;}
+function curStreak(){const t=dstr(new Date());const y=new Date();y.setDate(y.getDate()-1);return(S.last===t||S.last===dstr(y))?S.streak:0;}
+const rvKey=(t,u,i)=>t+':'+u+':'+i;
+const addReview=(t,u,i)=>{S.review[rvKey(t,u,i)]={t,u,i};save();};
+const delReview=(t,u,i)=>{delete S.review[rvKey(t,u,i)];save();};
+
+/* ---------------- TTS ---------------- */
+let voices=[];
+const hasTTS='speechSynthesis' in window;
+if(hasTTS){const lv=()=>{voices=speechSynthesis.getVoices();};lv();speechSynthesis.onvoiceschanged=lv;}
+function pickVoice(){return voices.find(v=>v.lang==='en-US'&&/Google|Microsoft|Aria|Jenny|Samantha|Zira/i.test(v.name))||voices.find(v=>v.lang==='en-US')||voices.find(v=>/^en/i.test(v.lang))||null;}
+function speak(text,rate){
+  if(TEST)return Promise.resolve();
+  if(!hasTTS){toast('Seu navegador não tem voz sintetizada.');return Promise.resolve();}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=rate||S.rate;
+  const v=pickVoice();if(v)u.voice=v;
+  return new Promise(res=>{u.onend=res;u.onerror=res;speechSynthesis.speak(u);});
+}
+let curAudio=null;
+function stopAudio(){try{if(hasTTS)speechSynthesis.cancel();}catch(e){}if(curAudio){try{curAudio.pause();}catch(e){}curAudio=null;}}
+function playUrl(url){stopAudio();curAudio=new Audio(url);curAudio.play().catch(()=>toast('Não consegui tocar a gravação.'));}
+function rateHTML(){return '<div class="rate" title="Velocidade da voz">'+[0.75,1].map(r=>`<button data-rate="${r}" class="${S.rate===r?'on':''}">${r===1?'1x':r+'x'}</button>`).join('')+'</div>';}
+function bindRate(root){$$('[data-rate]',root).forEach(b=>b.onclick=()=>{S.rate=parseFloat(b.dataset.rate);save();$$('[data-rate]',root).forEach(x=>x.classList.toggle('on',x===b));});}
+
+/* =====================================================================
+   AVALIAÇÃO DE FALA
+   ===================================================================== */
+const NUMW={zero:0,one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,thirteen:13,fourteen:14,fifteen:15,sixteen:16,seventeen:17,eighteen:18,nineteen:19,twenty:20,thirty:30,forty:40,fifty:50,sixty:60,seventy:70,eighty:80,ninety:90};
+const CONTR={"i'm":'i am',"you're":'you are',"he's":'he is',"she's":'she is',"it's":'it is',"we're":'we are',"they're":'they are',"don't":'do not',"doesn't":'does not',"didn't":'did not',"can't":'cannot',"won't":'will not',"isn't":'is not',"aren't":'are not',"wasn't":'was not',"i'll":'i will',"i've":'i have',"let's":'let us',"what's":'what is',"that's":'that is',"there's":'there is',"here's":'here is',"i'd":'i would',"you'll":'you will',"ok":'okay'};
+const HOM={too:'to',their:'there',"they're":'there'};
+function norm(s){
+  let t=String(s).toLowerCase().replace(/[’‘`]/g,"'").replace(/-/g,' ').replace(/[^a-z0-9'\s]/g,' ').split(/\s+/).filter(Boolean);
+  let out=[];
+  for(const w of t){const c=CONTR[w];if(c)out.push(...c.split(' '));else out.push(w);}
+  t=out;out=[];
+  for(let i=0;i<t.length;i++){
+    const w=t[i];
+    if(w in NUMW){
+      let n=NUMW[w];
+      if(n>=20&&n%10===0&&i+1<t.length&&t[i+1] in NUMW&&NUMW[t[i+1]]>=1&&NUMW[t[i+1]]<=9){n+=NUMW[t[i+1]];i++;}
+      out.push(String(n));
+    }else out.push(HOM[w]||w);
+  }
+  return out;
+}
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c;}return p[n];}
+const sim=(a,b)=>1-lev(a,b)/Math.max(a.length,b.length,1);
+/* Levenshtein no nível de palavras, com custo 0.5 para palavras parecidas (pronúncia) */
+function align(t,h){
+  const n=t.length,m=h.length,d=[],b=[];
+  for(let i=0;i<=n;i++){d.push(new Array(m+1).fill(0));b.push(new Array(m+1).fill(''));}
+  for(let i=1;i<=n;i++){d[i][0]=i;b[i][0]='D';}
+  for(let j=1;j<=m;j++){d[0][j]=j;b[0][j]='I';}
+  const sc=(x,y)=>x===y?0:(sim(x,y)>=0.6?0.5:1);
+  for(let i=1;i<=n;i++)for(let j=1;j<=m;j++){
+    let best=d[i-1][j-1]+sc(t[i-1],h[j-1]),op='M';
+    if(d[i-1][j]+1<best){best=d[i-1][j]+1;op='D';}
+    if(d[i][j-1]+1<best){best=d[i][j-1]+1;op='I';}
+    d[i][j]=best;b[i][j]=op;
+  }
+  const ops=[];let i=n,j=m;
+  while(i>0||j>0){
+    const op=b[i][j];
+    if(op==='M'){const x=t[i-1],y=h[j-1];ops.push({s:x===y?'ok':(sim(x,y)>=0.6?'near':'bad'),ti:i-1,t:x,h:y});i--;j--;}
+    else if(op==='D'){ops.push({s:'miss',ti:i-1,t:t[i-1]});i--;}
+    else{ops.push({s:'extra',h:h[j-1]});j--;}
+  }
+  return ops.reverse();
+}
+function scoreOps(ops,n,conf){
+  const ok=ops.filter(o=>o.s==='ok').length,near=ops.filter(o=>o.s==='near').length,extra=ops.filter(o=>o.s==='extra').length;
+  const acc=n?(ok+0.5*near)/(n+0.5*extra):0;
+  const c=conf>0?conf:acc;
+  return {acc,conf:c,score:Math.max(0,Math.min(100,Math.round(100*(0.7*acc+0.3*c))))};
+}
+/* alts: [{t:'texto', c:confiança}] — escolhe a melhor alternativa */
+function evaluate(target,alts){
+  const tt=norm(target);let best=null;
+  const cands=alts&&alts.length?alts:[{t:'',c:0}];
+  for(const a of cands){
+    const ops=align(tt,norm(a.t));
+    const sc=scoreOps(ops,tt.length,a.c||0);
+    if(!best||sc.score>best.score)best={ops,said:a.t,...sc};
+  }
+  return best;
+}
+function opsHTML(ops,disp){
+  return ops.map(o=>{
+    if(o.s==='extra')return `<span class="w extra">${esc(o.h)}</span>`;
+    const cls={ok:'ok',near:'near',bad:'bad',miss:'bad'}[o.s];
+    const tip=o.s==='miss'?'faltou':(o.h&&o.h!==o.t?'ouvi: '+o.h:'');
+    return `<span class="w ${cls}" title="${esc(tip)}">${esc(disp[o.ti]||o.t)}</span>`;
+  }).join(' ');
+}
+
+/* ---------------- captura: MediaRecorder + SpeechRecognition ao mesmo tempo ---------------- */
+const SRC=window.SpeechRecognition||window.webkitSpeechRecognition;
+function micMsg(e){
+  const n=e&&e.name;
+  if(n==='NotAllowedError'||n==='SecurityError')return 'Permissão do microfone negada. Clique no cadeado ao lado do endereço, permita o microfone e tente de novo. (Abra via http://localhost, não via file://.)';
+  if(n==='NotFoundError'||n==='OverconstrainedError')return 'Nenhum microfone encontrado. Conecte um microfone e tente de novo.';
+  if(n==='NotReadableError')return 'O microfone está sendo usado por outro programa. Feche-o e tente de novo.';
+  return 'Não consegui acessar o microfone ('+(n||'erro')+').';
+}
+async function startCapture(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw {name:'NoMediaDevices'};
+  const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  const cap={stream,chunks:[],finals:[],interim:'',srErr:null,mr:null,sr:null,mime:'',mrDone:Promise.resolve(),srDone:Promise.resolve()};
+  if(window.MediaRecorder){
+    try{
+      const mime=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg'].find(m=>MediaRecorder.isTypeSupported(m));
+      cap.mr=new MediaRecorder(stream,mime?{mimeType:mime}:undefined);cap.mime=cap.mr.mimeType||mime||'';
+      cap.mr.ondataavailable=e=>{if(e.data&&e.data.size)cap.chunks.push(e.data);};
+      cap.mrDone=new Promise(r=>{cap.mr.onstop=r;});
+      cap.mr.start();
+    }catch(e){cap.mr=null;cap.mrDone=Promise.resolve();}
+  }
+  if(SRC){
+    try{
+      const sr=new SRC();sr.lang='en-US';sr.interimResults=true;sr.maxAlternatives=3;sr.continuous=true;
+      sr.onresult=e=>{
+        for(let i=e.resultIndex;i<e.results.length;i++){
+          const res=e.results[i];
+          if(res.isFinal)cap.finals[i]=Array.from(res).map(a=>({t:a.transcript,c:a.confidence||0}));
+          else cap.interim=res[0].transcript;
+        }
+        if(cap.onInterim){const f=cap.finals.filter(Boolean).map(s=>s[0].t).join(' ');cap.onInterim((f+' '+cap.interim).trim());}
+      };
+      sr.onerror=e=>{cap.srErr=e.error;};
+      cap.srDone=new Promise(r=>{sr.onend=r;});
+      cap.sr=sr;sr.start();
+    }catch(e){cap.srErr='start';cap.srDone=Promise.resolve();}
+  }
+  return cap;
+}
+function buildAlts(cap){
+  const segs=cap.finals.filter(Boolean);
+  if(!segs.length)return cap.interim?[{t:cap.interim,c:0}]:[];
+  const out=[];
+  for(let k=0;k<3;k++){const parts=segs.map(s=>s[k]||s[0]);out.push({t:parts.map(p=>p.t.trim()).join(' '),c:avg(parts.map(p=>p.c))});}
+  return out;
+}
+async function stopCapture(cap){
+  try{if(cap.mr&&cap.mr.state!=='inactive')cap.mr.stop();}catch(e){}
+  try{if(cap.sr)cap.sr.stop();}catch(e){}
+  await Promise.race([Promise.all([cap.mrDone,cap.srDone]),new Promise(r=>setTimeout(r,3000))]);
+  cap.stream.getTracks().forEach(t=>t.stop());
+  const blob=cap.chunks.length?new Blob(cap.chunks,{type:cap.mime||'audio/webm'}):null;
+  return {url:blob?URL.createObjectURL(blob):null,alts:buildAlts(cap),srErr:cap.srErr};
+}
+
+/* =====================================================================
+   TELA INICIAL
+   ===================================================================== */
+const LESSONS=[['vocab','📖','Verbos'],['quiz','✅','Quiz'],['build','🧱','Montar'],['speak','🎤','Falar']];
+function totalDone(){return Object.keys(S.done).length;}
+function greet(){const t=new Date().getHours();return t<12?'Bom dia':t<18?'Boa tarde':'Boa noite';}
+function renderHome(){
+  stopAudio();
+  const nRev=Object.keys(S.review).length,tot=UNITS.length*4,dn=totalDone();
+  const warns=[];
+  if(location.protocol==='file:')warns.push('<div class="warn err"><b>Você abriu via file://.</b> O microfone e o reconhecimento de voz não funcionam bem assim. Rode <code>python -m http.server 8000</code> na pasta do app e abra <b>http://localhost:8000</b> no Chrome.</div>');
+  if(!SRC)warns.push('<div class="warn"><b>Seu navegador não suporta reconhecimento de voz</b> (ex.: Firefox). Use o <b>Chrome</b> ou o <b>Edge</b> para receber nota de pronúncia. Aqui você ainda pode gravar e se autoavaliar.</div>');
+  view(`
+  <div class="hero"><div class="hero-t"><div class="logo">VerbUp<small>Complemento do Busuu · verbos e conversação</small></div>
+    <div class="pill" title="Sequência de dias">🔥 ${curStreak()}</div><div class="pill" title="XP">⭐ ${S.xp}</div></div>
+    <div class="hero-g">${greet()}. Que tal um verbo hoje?</div></div>
+  ${warns.join('')}
+  <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><b>Seu progresso</b><span class="muted">${dn}/${tot} lições</span></div>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="bar"><i style="width:${Math.round(dn/tot*100)}%"></i></div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:8px"><span class="muted">Velocidade da voz:</span>${rateHTML()}</div></div>
+  <div class="card" style="border-left:4px solid var(--red)"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><div style="flex:1;min-width:180px"><b>🔁 Revisão</b><div class="muted">${nRev?nRev+' item(ns) que você errou':'Nada para revisar ainda. Os erros aparecem aqui.'}</div></div>
+    <button class="btn red" id="rev" ${nRev?'':'disabled'}>Revisar</button></div></div>
+  ${UNITS.map((u,ui)=>{const d=LESSONS.filter(l=>S.done[ui+':'+l[0]]).length;return `
+  <div class="card unit" style="--c:${u.color}"><h3><span class="num">${u.id}</span>${esc(u.title)} ${u.icon}</h3><div class="muted">${esc(u.desc)}</div>
+    <div class="bar" style="margin-top:10px;height:8px"><i style="width:${d*25}%;background:${u.color}"></i></div>
+    <div class="lessons">${LESSONS.map(l=>`<button class="les ${S.done[ui+':'+l[0]]?'done':''}" data-u="${ui}" data-l="${l[0]}"><span>${l[1]}</span>${l[2]}</button>`).join('')}</div></div>`;}).join('')}
+  `);
+  bindRate(app);
+  $$('.les').forEach(b=>b.onclick=()=>openLesson(+b.dataset.u,b.dataset.l));
+  const rv=$('#rev');if(rv)rv.onclick=startReview;
+}
+function openLesson(u,kind){
+  const U=UNITS[u];
+  if(kind==='vocab')return renderVocab(u);
+  let steps;
+  if(kind==='quiz')steps=U.quiz.map((_,i)=>({k:'quiz',u,i}));
+  else if(kind==='build')steps=U.build.map((_,i)=>({k:'build',u,i}));
+  else steps=U.dialog.lines.map((l,i)=>l[0]==='y'?{k:'speak',u,i}:null).filter(Boolean);
+  startSession({title:U.title,steps,u,lesson:kind,review:false});
+}
+function startReview(){
+  const steps=Object.values(S.review).map(v=>({k:v.t==='q'?'quiz':v.t==='b'?'build':'speak',u:v.u,i:v.i})).filter(s=>UNITS[s.u]);
+  if(!steps.length){toast('Nada para revisar.');return;}
+  startSession({title:'Revisão',steps:shuffle(steps),u:null,lesson:'review',review:true});
+}
+
+/* =====================================================================
+   LIÇÃO 1: VOCABULÁRIO
+   ===================================================================== */
+function renderVocab(u,idx){
+  idx=idx||0;
+  const U=UNITS[u],v=U.vocab[idx],last=idx===U.vocab.length-1;
+  view(`
+  <div class="top"><button class="x" id="close">✕</button><div class="bar"><i style="width:${Math.round(idx/U.vocab.length*100)}%"></i></div>${rateHTML()}</div>
+  <div class="card vcard"><div class="muted">Verbo ${idx+1} de ${U.vocab.length}</div>
+    <div class="big">${esc(v.base)}</div><div style="font-size:1.2rem;font-weight:700">${esc(v.pt)}</div>
+    <div class="forms"><div><small>Base</small><b>${esc(v.base)}</b></div><div><small>Passado</small><b>${esc(v.past)}</b></div><div><small>Particípio</small><b>${esc(v.pp)}</b></div></div>
+    ${v.note?`<div class="muted">Dica: ${esc(v.note)}</div>`:''}
+    <div class="ex"><b>${esc(v.ex)}</b><div class="muted">${esc(v.exPt)}</div></div>
+    <div class="row"><button class="btn blue sm" id="s1">🔊 Ouvir o verbo</button><button class="btn blue sm" id="s2">🔊 Ouvir a frase</button></div>
+    <div class="dots">${U.vocab.map((_,i)=>`<i class="${i===idx?'on':''}"></i>`).join('')}</div></div>
+  <div class="foot"><div class="in">${idx>0?'<button class="btn ghost" id="prev">Voltar</button>':''}<button class="btn" id="next">${last?'Concluir':'Próximo'}</button></div></div>`);
+  bindRate(app);
+  $('#close').onclick=renderHome;
+  $('#s1').onclick=()=>speak(v.base.replace(/ \+ verbo/,''));
+  $('#s2').onclick=()=>speak(v.ex);
+  const p=$('#prev');if(p)p.onclick=()=>renderVocab(u,idx-1);
+  $('#next').onclick=()=>{
+    if(!last)return renderVocab(u,idx+1);
+    ses={title:U.title,steps:[],i:0,xp:20,ok:0,tot:0,speech:[],errs:[],u,lesson:'vocab',review:false};
+    finishSession();
+  };
+  if(!TEST)speak(v.base.replace(/ \+ verbo/,''));
+}
+
+/* =====================================================================
+   MOTOR DE SESSÃO (quiz / montar / falar / revisão)
+   ===================================================================== */
+let ses=null;
+function startSession(o){ses=Object.assign({i:0,xp:0,ok:0,tot:0,speech:[],errs:[]},o);renderStep();}
+function topbar(){return `<div class="top"><button class="x" id="close">✕</button><div class="bar"><i style="width:${Math.round(ses.i/ses.steps.length*100)}%"></i></div>${rateHTML()}</div>`;}
+function bindTop(){bindRate(app);$('#close').onclick=renderHome;}
+function nextStep(){ses.i++;if(ses.i>=ses.steps.length)finishSession();else renderStep();}
+function renderStep(){
+  const st=ses.steps[ses.i];
+  if(st.k==='quiz')renderQuiz(st);else if(st.k==='build')renderBuild(st);else renderSpeak(st);
+}
+function addXP(n,el){ses.xp+=n;if(el)pop(el,'+'+n+' XP');}
+function logErr(pat,said,right,ex){ses.errs.push({pat,said,right,ex});}
+function footNext(label,enabled){return `<div class="foot"><div class="in"><button class="btn" id="next" ${enabled?'':'disabled'}>${label||'Continuar'}</button></div></div>`;}
+
+/* ---------------- múltipla escolha ---------------- */
+const KIND={gap:'Complete a lacuna',tr:'Escolha a tradução certa',fix:'Qual frase está correta?'};
+function renderQuiz(st){
+  const q=UNITS[st.u].quiz[st.i];
+  const opts=shuffle([{t:q.a,ok:true}].concat(q.w.map(w=>({t:w[0],pat:w[1],ex:w[2]}))));
+  view(`${topbar()}
+  <div class="card"><div class="q-kind">${KIND[q.k]||''}${ses.review?' · revisão':''}</div><div class="q-text">${esc(q.q)}</div>
+  <div id="opts">${opts.map((o,i)=>`<button class="opt" data-i="${i}">${esc(o.t)}</button>`).join('')}</div>
+  <div id="fb"></div></div>${footNext('Continuar',false)}`);
+  bindTop();
+  $$('.opt').forEach(b=>b.onclick=()=>{
+    const o=opts[+b.dataset.i];
+    $$('.opt').forEach(x=>{x.disabled=true;if(opts[+x.dataset.i].ok)x.classList.add('right');});
+    ses.tot++;
+    let fb;
+    if(o.ok){
+      b.classList.add('right');ses.ok++;addXP(10,b);
+      if(ses.review)delReview('q',st.u,st.i);
+      fb=`<div class="fb good"><b>✔ Correto.</b><p>${esc(q.why)}</p></div>`;
+    }else{
+      b.classList.add('wrong');
+      addReview('q',st.u,st.i);logErr(o.pat,o.t,q.a,o.ex);
+      fb=`<div class="fb bad"><b class="tag">${esc(PAT[o.pat].name)}</b><b>Você escolheu:</b> ${esc(o.t)}<p><b>Por que está errado:</b> ${esc(o.ex)}</p><p><b>Certa:</b> ${esc(q.a)}<br>${esc(q.why)}</p></div>`;
+    }
+    $('#fb').innerHTML=fb+`<button class="btn blue sm" id="hear">🔊 Ouvir a frase certa</button>`;
+    $('#hear').onclick=()=>speak(q.a);
+    $('#next').disabled=false;
+  });
+  $('#next').onclick=nextStep;
+}
+
+/* ---------------- montar a frase ---------------- */
+function renderBuild(st){
+  const it=UNITS[st.u].build[st.i];
+  const words=it.s.split(' ').map(w=>({w,x:false})).concat(it.extra.map(e=>({w:e[0],x:true,pat:e[1]})));
+  const chips=shuffle(words);
+  let ans=[];
+  view(`${topbar()}
+  <div class="card"><div class="q-kind">Monte a frase${ses.review?' · revisão':''}</div><div class="q-text">${esc(it.pt)}</div>
+  <div class="slot" id="slot"></div><div class="bank" id="bank">${chips.map((c,i)=>`<button class="chip" data-i="${i}">${esc(c.w)}</button>`).join('')}</div>
+  <div id="fb"></div></div>
+  <div class="foot"><div class="in"><button class="btn ghost" id="clr">Limpar</button><button class="btn" id="chk" disabled>Verificar</button></div></div>`);
+  bindTop();
+  let done=false;
+  const paint=()=>{
+    $('#slot').innerHTML=ans.map((ci,p)=>`<button class="chip" data-p="${p}">${esc(chips[ci].w)}</button>`).join('');
+    $$('#bank .chip').forEach(b=>b.classList.toggle('used',ans.includes(+b.dataset.i)));
+    $('#chk').disabled=done||!ans.length;
+    if(!done)$$('#slot .chip').forEach(b=>b.onclick=()=>{ans.splice(+b.dataset.p,1);paint();});
+  };
+  $$('#bank .chip').forEach(b=>b.onclick=()=>{if(done||ans.includes(+b.dataset.i))return;ans.push(+b.dataset.i);paint();});
+  $('#clr').onclick=()=>{if(done)return;ans=[];paint();};
+  $('#chk').onclick=()=>{
+    if(done)return;done=true;
+    const got=ans.map(i=>chips[i].w);const sentence=got.join(' ');
+    ses.tot++;
+    const gw=got,tw=it.s.split(' ');
+    if(sentence===it.s){
+      ses.ok++;addXP(10,$('#chk'));if(ses.review)delReview('b',st.u,st.i);
+      $('#fb').innerHTML=`<div class="fb good"><b>✔ Frase correta.</b><p>${esc(it.s)}</p>${it.why?`<p>${esc(it.why)}</p>`:''}</div><button class="btn blue sm" id="hear">🔊 Ouvir</button>`;
+    }else{
+      let pat=it.pat;const usedExtra=ans.map(i=>chips[i]).find(c=>c.x);
+      if(usedExtra)pat=usedExtra.pat;
+      else if(sentence.toLowerCase()===it.s.toLowerCase())pat='C';
+      addReview('b',st.u,st.i);
+      const diff=gw.map((w,i)=>`<span class="w ${w===tw[i]?'ok':'bad'}">${esc(w)}</span>`).join(' ');
+      let why=it.why;
+      if(usedExtra)why=`Você usou “${usedExtra.w}”, que não pertence à frase. ${it.why}`;
+      logErr(pat,sentence,it.s,why||PAT[pat].tip);
+      $('#fb').innerHTML=`<div class="fb bad"><b class="tag">${esc(PAT[pat].name)}</b><p><b>Sua frase:</b> ${diff}</p><p><b>Correta:</b> ${esc(it.s)}</p><p>${esc(why||PAT[pat].tip)}</p></div><button class="btn blue sm" id="hear">🔊 Ouvir a frase certa</button>`;
+    }
+    $('#hear').onclick=()=>speak(it.s);
+    $('#chk').disabled=true;$('#chk').textContent='Verificar';
+    const nb=document.createElement('button');nb.className='btn';nb.id='next';nb.textContent='Continuar';
+    $('#chk').replaceWith(nb);nb.onclick=nextStep;
+    $$('#slot .chip').forEach(b=>b.onclick=null);
+  };
+  paint();
+}
+
+/* ---------------- conversa falada ---------------- */
+function renderSpeak(st){
+  const U=UNITS[st.u],lines=U.dialog.lines,line=lines[st.i],target=line[1];
+  const disp=target.split(/\s+/);
+  const hist=lines.slice(0,st.i).map(l=>l[0]==='n'
+    ?`<div class="bub n">${esc(l[1])} <button class="say" data-say="${esc(l[1])}" title="Ouvir">🔊</button><small>${esc(l[2])}</small></div>`
+    :`<div class="bub y">${esc(l[1])}</div>`).join('');
+  const prevN=st.i>0&&lines[st.i-1][0]==='n'?lines[st.i-1][1]:null;
+  view(`${topbar()}
+  <div class="muted" style="margin-bottom:8px">📍 ${esc(U.dialog.scene)}${ses.review?' · revisão':''}</div>
+  ${!SRC?'<div class="warn"><b>Sem reconhecimento de voz neste navegador.</b> Use Chrome ou Edge para receber nota. Aqui a gravação serve só para você se ouvir e se autoavaliar.</div>':''}
+  ${location.protocol==='file:'?'<div class="warn err">Aberto via file://. Rode <code>python -m http.server 8000</code> e acesse http://localhost:8000.</div>':''}
+  <div class="chat">${hist}</div>
+  <div class="card"><div class="q-kind">Sua vez — diga em voz alta</div>
+    <div class="target" id="tg">${esc(target)}</div>
+    <div><button class="btn ghost sm" id="trT">👁 Mostrar tradução</button> <span id="tr" class="muted" hidden>${esc(line[2])}</span></div>
+    <div class="row"><button class="btn blue sm" id="hearN">🔊 Ouvir o nativo</button></div>
+    <button class="mic" id="mic" title="Gravar">🎤</button>
+    <div id="status" class="muted" style="text-align:center">Toque no microfone, fale a frase e toque de novo para parar.</div>
+    <div id="res"></div></div>
+  <div class="foot"><div class="in"><button class="btn ghost" id="skip" hidden>Pular mesmo assim</button><button class="btn" id="next" disabled>Continuar</button></div></div>`);
+  bindTop();
+  $$('[data-say]').forEach(b=>b.onclick=()=>speak(b.dataset.say));
+  $('#trT').onclick=()=>{const t=$('#tr');t.hidden=!t.hidden;$('#trT').textContent=t.hidden?'👁 Mostrar tradução':'🙈 Esconder tradução';};
+  $('#hearN').onclick=()=>speak(target);
+  if(prevN&&!TEST)speak(prevN);
+
+  let cap=null,attempts=0,best=-1,first=null,busy=false,tmr=null,passed=false,recorded=false,lastErrLogged=false;
+  const status=t=>{$('#status').innerHTML=t;};
+  const finishStep=(counted)=>{
+    if(counted&&best>=0){ses.speech.push(best);ses.tot++;if(best>=70){ses.ok++;addXP(10);}}
+    nextStep();
+  };
+  $('#next').onclick=()=>{
+    if(!SRC){ses.tot++;ses.ok++;addXP(5);if(ses.review)delReview('s',st.u,st.i);nextStep();return;}
+    if(ses.review&&passed)delReview('s',st.u,st.i);
+    finishStep(true);
+  };
+  $('#skip').onclick=()=>{finishStep(true);};
+  $('#mic').onclick=async()=>{
+    if(busy)return;
+    if(cap){ // parar
+      busy=true;clearTimeout(tmr);$('#mic').classList.remove('rec');status('Processando…');
+      const c=cap;cap=null;
+      const r=await stopCapture(c);busy=false;onCaptured(r);return;
+    }
+    stopAudio();
+    try{cap=await startCapture();}catch(e){status('<span style="color:var(--red-d)">'+esc(micMsg(e))+'</span>');cap=null;return;}
+    $('#mic').classList.add('rec');$('#res').innerHTML='';
+    status('🔴 Gravando… fale agora. Toque para parar.');
+    cap.onInterim=t=>{if(t)status('🔴 Ouvindo: <i>'+esc(t)+'</i>');};
+    tmr=setTimeout(()=>{if(cap)$('#mic').click();},14000);
+  };
+  function onCaptured(r){
+    recorded=true;
+    const ownBtn=r.url?`<button class="btn ghost sm" id="own">▶ Ouvir minha gravação</button>`:'';
+    if(!SRC){
+      status('Gravação pronta. Ouça e compare com o nativo.');
+      $('#res').innerHTML=`<div class="fb good"><p>Sem nota automática neste navegador. Ouça a si mesmo e compare com o nativo: ritmo, final das palavras e sons como “th”, “-ed”, “-s”.</p></div><div class="row">${ownBtn}<button class="btn blue sm" id="nat">🔊 Ouvir o nativo</button></div>`;
+      if(r.url)$('#own').onclick=()=>playUrl(r.url);
+      $('#nat').onclick=()=>speak(target);
+      $('#next').disabled=false;return;
+    }
+    const hasText=r.alts.length&&r.alts.some(a=>a.t.trim());
+    if(!hasText&&r.srErr&&r.srErr!=='no-speech'&&r.srErr!=='aborted'){
+      const m={'not-allowed':'O navegador bloqueou o reconhecimento de voz. Libere o microfone para este site.','service-not-allowed':'O reconhecimento de voz está bloqueado neste navegador.','network':'O reconhecimento de voz do Chrome precisa de internet. Verifique a conexão.','audio-capture':'Não consegui capturar o áudio do microfone.'}[r.srErr]||('Erro no reconhecimento de voz: '+r.srErr);
+      status('<span style="color:var(--red-d)">'+esc(m)+'</span>');
+      $('#res').innerHTML=r.url?`<div class="row">${ownBtn}</div>`:'';if(r.url)$('#own').onclick=()=>playUrl(r.url);
+      return;
+    }
+    attempts++;
+    const ev=evaluate(target,hasText?r.alts:[]);
+    if(first===null)first=ev.score;
+    best=Math.max(best,ev.score);
+    const bad=ev.ops.filter(o=>o.s==='near'||o.s==='bad'||o.s==='miss');
+    passed=best>=70;
+    if(first<70&&!lastErrLogged){lastErrLogged=true;addReview('s',st.u,st.i);
+      logErr('P',ev.said||'(nada reconhecido)',target,bad.length?'Palavras com problema: '+bad.map(o=>o.t).join(', ')+'.':'Nota baixa de pronúncia.');}
+    const col=ev.score>=70?'var(--green-d)':ev.score>=40?'var(--orange)':'var(--red-d)';
+    status(hasText?'Pronto.':'Não ouvi nada. Fale mais perto do microfone e tente de novo.');
+    $('#res').innerHTML=`
+      <div class="score" style="color:${col}">${ev.score}<span style="font-size:1rem">/100</span></div>
+      <div class="muted" style="text-align:center">Palavras ${Math.round(ev.acc*100)}% (peso 70%) · Confiança ${Math.round(ev.conf*100)}% (peso 30%)</div>
+      <div class="target" style="margin-top:10px">${opsHTML(ev.ops,disp)}</div>
+      <div class="muted"><span class="w ok">certa</span> <span class="w near">parecida (pronúncia)</span> <span class="w bad">faltou/trocada</span> <span class="w extra">extra</span></div>
+      <div class="cmp"><div><small>Você disse</small>${esc(ev.said||'(nada reconhecido)')}</div><div><small>Esperado</small>${esc(target)}</div></div>
+      ${bad.length?`<div><b>Palavras para treinar:</b>${bad.map(o=>{const w=(disp[o.ti]||o.t).replace(/[^A-Za-z0-9']/g,'');return `<div class="prob"><button class="btn blue sm" data-w="${esc(w)}">🐢 ${esc(w)}</button><span class="muted">${o.s==='miss'?'faltou':(o.h?'ouvi “'+esc(o.h)+'”':'')}</span></div>`;}).join('')}</div>`:''}
+      <div class="row">${ownBtn}<button class="btn blue sm" id="nat">🔊 Ouvir o nativo</button></div>
+      ${ev.score<70?`<div class="fb bad"><b>Nota abaixo de 70.</b> Repita a frase antes de avançar${attempts>=3?' (ou pule se estiver travado)':''}.</div>`:'<div class="fb good"><b>✔ Boa!</b> Você pode avançar.</div>'}`;
+    if(r.url)$('#own').onclick=()=>playUrl(r.url);
+    $('#nat').onclick=()=>speak(target);
+    $$('[data-w]').forEach(b=>b.onclick=()=>speak(b.dataset.w,0.6));
+    $('#next').disabled=!passed;
+    $('#skip').hidden=passed||attempts<3;
+  }
+  st._test={onCaptured};
+}
+
+/* =====================================================================
+   FIM DA LIÇÃO
+   ===================================================================== */
+function finishSession(){
+  const s=ses;
+  if(!s.review){S.done[s.u+':'+s.lesson]=1;s.xp+=10;}
+  S.xp+=s.xp;touchStreak();save();
+  const sAvg=s.speech.length?Math.round(avg(s.speech)):null;
+  const groups={};s.errs.forEach(e=>(groups[e.pat]=groups[e.pat]||[]).push(e));
+  const order=['S','O','C','V','P'].filter(p=>groups[p]);
+  view(`
+  <div class="card" style="text-align:center"><div style="font-size:3rem">${s.errs.length?'💪':'🎉'}</div><div class="big-n">${s.review?'Revisão concluída':'Lição concluída!'}</div>
+    <div class="stats" style="margin-top:14px"><div><div class="big-n" style="color:var(--orange)">+${s.xp}</div><span class="muted">XP ganho</span></div>
+    <div><div class="big-n">${s.tot?s.ok+'/'+s.tot:'—'}</div><span class="muted">Acertos</span></div>
+    <div><div class="big-n">${sAvg===null?'—':sAvg}</div><span class="muted">Nota de fala</span></div></div></div>
+  <div class="card"><h3 style="margin-top:0">Seus erros desta lição</h3>
+  ${order.length?order.map(p=>`<div class="errgrp"><b>${esc(PAT[p].name)}</b> <span class="muted">(${groups[p].length})</span><div class="muted" style="margin:4px 0">${esc(PAT[p].tip)}</div><ul style="padding-left:18px;margin:6px 0">${groups[p].map(e=>`<li><s style="color:var(--red-d)">${esc(e.said)}</s> → <b style="color:var(--green-d)">${esc(e.right)}</b><br><span class="muted">${esc(e.ex)}</span></li>`).join('')}</ul></div>`).join(''):'<p>Nenhum erro nesta lição. Sem desculpas para o próximo nível. 🚀</p>'}
+  </div>
+  <div class="row"><button class="btn" id="home">Voltar à trilha</button>${Object.keys(S.review).length?'<button class="btn red" id="rev">Revisar erros</button>':''}</div>`);
+  $('#home').onclick=renderHome;const rv=$('#rev');if(rv)rv.onclick=startReview;
+}
+
+/* =====================================================================
+   AUTO-TESTE (abra index.html#selftest) — valida conteúdo, avaliador e telas
+   ===================================================================== */
+function selfTest(){
+  const errs=[],ok=m=>{};
+  const chk=(c,m)=>{if(!c)errs.push(m);};
+  UNITS.forEach((U,ui)=>{
+    chk(U.vocab.length>=5,'U'+(ui+1)+' vocab curto');
+    chk(U.quiz.length>=8&&U.quiz.length<=10,'U'+(ui+1)+' quiz fora de 8-10: '+U.quiz.length);
+    U.quiz.forEach((q,i)=>{
+      chk(q.w.length===3,`U${ui+1}Q${i+1} precisa de 3 erradas`);
+      const all=[q.a].concat(q.w.map(w=>w[0]));chk(new Set(all).size===all.length,`U${ui+1}Q${i+1} opções repetidas`);
+      q.w.forEach(w=>chk(PAT[w[1]]&&w[2],`U${ui+1}Q${i+1} padrão/explicação inválidos`));
+      chk(KIND[q.k],`U${ui+1}Q${i+1} tipo inválido`);
+    });
+    U.build.forEach((b,i)=>{b.extra.forEach(e=>chk(PAT[e[1]],`U${ui+1}B${i+1} extra inválido`));b.extra.forEach(e=>chk(!b.s.split(' ').includes(e[0]),`U${ui+1}B${i+1} extra igual a chip real`));});
+    U.dialog.lines.forEach((l,i)=>{if(l[0]==='y'){chk(norm(l[1]).length===l[1].split(/\s+/).length,`U${ui+1} fala ${i} tokens != palavras: ${l[1]}`);chk(!/[a-z]'[a-z]/i.test(l[1].replace(/o'clock/g,'')),`U${ui+1} fala ${i} tem contração`);}});
+  });
+  // avaliador
+  const t='I went home and ate dinner.';
+  let e=evaluate(t,[{t:'I went home and ate dinner',c:0.9}]);chk(e.score>=95,'perfeito deveria ser >=95: '+e.score);
+  e=evaluate(t,[{t:'I went home and eat dinner',c:0.9}]);chk(e.ops.some(o=>o.s==='bad'||o.s==='near'),'eat vs ate deveria marcar');
+  e=evaluate(t,[{t:'I went to home and ate dinner',c:0.9}]);chk(e.ops.some(o=>o.s==='extra'&&o.h==='to'),'extra "to" não detectado');
+  e=evaluate(t,[{t:'went home ate dinner',c:0.9}]);chk(e.ops.filter(o=>o.s==='miss').length===2,'faltas não detectadas');
+  e=evaluate(t,[{t:'banana',c:0.5}]);chk(e.score<30,'lixo deveria ser baixo: '+e.score);
+  e=evaluate('I am 24 years old.',[{t:"I'm twenty four years old",c:0.8}]);chk(e.score>=90,'contração/numeral: '+e.score);
+  e=evaluate(t,[]);chk(e.score===0,'vazio deve ser 0');
+  e=evaluate(t,[{t:'i want home and ate dinner',c:0.5},{t:'I went home and ate dinner',c:0.8}]);chk(e.score>=90,'melhor alternativa não escolhida');
+  e=evaluate('I went home.',[{t:'I want home',c:0.9}]);chk(e.ops.some(o=>o.s==='near'),'went/want deveria ser parecida');
+  // telas
+  try{
+    renderHome();
+    UNITS.forEach((U,ui)=>{
+      renderVocab(ui);
+      ['quiz','build','speak'].forEach(k=>{
+        openLesson(ui,k);
+        const n=ses.steps.length;
+        for(let i=0;i<n;i++){
+          ses.i=i;renderStep();
+          if(k==='quiz'){const o=$$('.opt');o[0].click();o[o.length-1].click;}
+          if(k==='build'){$$('#bank .chip').forEach((c,j)=>{});$('#bank .chip').click();$('#chk').click();}
+          if(k==='speak'){const st=ses.steps[i];const tg=UNITS[ui].dialog.lines[st.i][1];st._test.onCaptured({url:null,alts:[{t:tg,c:0.9}],srErr:null});chk($('.score'),'sem nota');}
+        }
+        finishSession();chk($('.big-n'),'sem tela de resultado');
+      });
+    });
+    startReview();
+    renderHome();
+  }catch(ex){errs.push('EXCEÇÃO: '+ex.message+' '+(ex.stack||'').split('\n')[1]);}
+  S=defState();try{localStorage.removeItem(KEY);}catch(e){}
+  document.title='SELFTEST '+(errs.length?'FAIL':'OK');
+  console.log('SELFTEST '+(errs.length?'FAIL\n'+errs.join('\n'):'OK'));
+  app.innerHTML='<pre>'+esc(errs.length?errs.join('\n'):'SELFTEST OK')+'</pre>';
+}
+window.addEventListener('error',e=>{console.log('ERRO JS: '+e.message);});
+if(TEST)selfTest();else renderHome();
+</script>
+</body>
+</html>
